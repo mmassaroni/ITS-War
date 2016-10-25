@@ -55,7 +55,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 		
 		<div id="juego">	
 			<div id="panel1" class="panel">
-			<a href="#">ejemplo</a>
+			<p>caca</p>
 			</div><!--cierre panel1-->
 			<div id="tablero">
 			</div><!--cierre tablero-->
