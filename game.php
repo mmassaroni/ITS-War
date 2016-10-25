@@ -52,8 +52,10 @@ $usuarioLocal = $_SESSION['objUsu'];
 				<li>PESOS $<?php echo $usuarioLocal->getplata(); ?></li>	
 			</ul>
 		</div> <!-- cierre menu -->	
+		
 		<div id="juego">	
 			<div id="panel1" class="panel">
+			<a href="#">ejemplo</a>
 			</div><!--cierre panel1-->
 			<div id="tablero">
 			</div><!--cierre tablero-->
