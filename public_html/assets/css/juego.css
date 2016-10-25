@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* HEAD */
+
+#menu {
+    height: auto;
+    width: 100%;
+    
+}
+
+#menu ul {
+    position: static;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0B486B;
+    text-align: center;   
+}
+
+#menu ul .usuario {
+	float: left;
+	background-color: #3B8686;
+}
+
+#menu ul li {
+    display: inline-block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 4em;
+    padding-left: 4em;
+    color: white;
+    font-size: 1.5em;
+    float: right;
+}
+
+#menu ul li, a {
+    font-family: 'Luckiest Guy', cursive;
+    text-transform: uppercase;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#menu a:hover li {
+    background-color: #79BD9A;
+}
+/* CIERRE HEAD */
