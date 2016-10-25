@@ -25,9 +25,18 @@ $usuarioLocal = $_SESSION['objUsu'];
 		</div> <!-- cierre menu -->	
 		<div id="juego">	
 			<div id="panel1" class="panel">
+				<div class="j1">
+					<h1>MASSA</h1>
+				</div>
+
+				<div class="j2">
+					
+				</div>
 			</div><!--cierre panel1-->
+			
 			<div id="tablero">
 			</div><!--cierre tablero-->
+			
 			<div id="panel2" class="panel">
 			</div><!--cierre panel2-->
 		</div><!--cierre juego-->
