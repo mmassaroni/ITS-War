@@ -13,35 +13,6 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link rel="stylesheet" href="assets/css/juego.css" />
 		<link rel="shortcut icon" href="ico.ico">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
-		<style>
-			#juego{
-				width: 100%;
-
-			}
-			.panel{
-				display: inline-block;
-				width: 20%;
-				margin: 2.5%;
-				height: 500px;
-				border: 2px solid black;
-				
-			    box-sizing: border-box;
-				float: left;
-				text-align: center;
-			}
-			#tablero{
-				display: inline-block;
-				width: 500px;
-				height: 500px;
-				border: 2px solid black;
-				
-				box-sizing: border-box;
-				float: left;
-				text-align: center;
-
-
-			}
-		</style>
 	</head>
 	<body>
 		<div id="menu">

@@ -52,3 +52,33 @@
     background-color: #79BD9A;
 }
 /* CIERRE HEAD */
+
+/*PANELES Y TABLERO*/
+
+#juego{
+    width: 100%;
+    margin: 50px auto 0;
+    display: flex;
+}
+
+.panel{
+    width: 20%;
+    height: 500px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;;
+}
+
+#tablero{
+    display: block;
+    width: 500px;
+    height: 500px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    margin: 0 auto;
+}
