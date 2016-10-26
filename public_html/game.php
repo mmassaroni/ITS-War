@@ -30,7 +30,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<div id="juego">	
 			<div id="panel1" class="panel">
 				<div class="j1">
-					<h1>MASSA</h1>
+					<h1>MASSA1</h1>
 				</div>
 
 				<div class="j2">
