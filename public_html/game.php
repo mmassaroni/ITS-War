@@ -42,9 +42,5 @@ $usuarioLocal = $_SESSION['objUsu'];
 			<div id="panel2" class="panel">
 			</div><!--cierre panel2-->
 		</div><!--cierre juego-->
-
-		<script>
-			
-		</script>
 	</body>
 </html>
