@@ -81,5 +81,9 @@
     float: left;
     text-align: center;
     margin: 0 auto;
-    background-image: url("images/tablero.jpg");
+}
+
+.imgTablero {
+    width: 100%;
+    height: 100%;
 }

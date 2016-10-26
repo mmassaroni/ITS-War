@@ -13,11 +13,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link rel="stylesheet" href="assets/css/juego.css" />
 		<link rel="shortcut icon" href="ico.ico">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
-		<script>
-			var elemento = $(".tablero");
-			var posicion = elemento.position();
-			alert("asd");
-		</script>
+		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	</head>
 	<body>
 		<div id="menu">
@@ -40,10 +36,15 @@ $usuarioLocal = $_SESSION['objUsu'];
 			</div><!--cierre panel1-->
 			
 			<div id="tablero">
+			<img src="images/tablero.jpg" class="imgTablero">
 			</div><!--cierre tablero-->
 			
 			<div id="panel2" class="panel">
 			</div><!--cierre panel2-->
 		</div><!--cierre juego-->
+
+		<script>
+			
+		</script>
 	</body>
 </html>

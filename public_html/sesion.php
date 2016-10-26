@@ -182,3 +182,5 @@ if ($_GET['log']==1) {
 		</script>
 	
 	</body>
+
+</html>
