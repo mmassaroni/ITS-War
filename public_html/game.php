@@ -14,6 +14,17 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link rel="shortcut icon" href="ico.ico">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script>
+			if(ev.offsetX == undefined){ // para firefox
+			    x = ev.pageX - $(this).offset().left;
+			    y = ev.pageY - $(this).offset().top;
+			}
+			else{ // chrome
+			    x = ev.offsetX;
+			    y = ev.offsetY;
+			}
+			alert(x + y);
+		</script>
 	</head>
 	<body>
 		<div id="menu">
