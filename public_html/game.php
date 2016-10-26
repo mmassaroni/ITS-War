@@ -14,8 +14,9 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link rel="shortcut icon" href="ico.ico">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
 		<script>
-			var elemento = $(".midiv");
+			var elemento = $(".tablero");
 			var posicion = elemento.position();
+			alert("asd");
 		</script>
 	</head>
 	<body>
