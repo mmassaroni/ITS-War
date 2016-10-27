@@ -15,12 +15,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js'></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<style>.punto{
-    width: 2px;
-    height: 2px;
-    background: #FFF;
-    position: absolute;
-}</style>
+
 		<script>
 
 			$(function () {
@@ -87,22 +82,34 @@ $usuarioLocal = $_SESSION['objUsu'];
 			</ul>
 		</div> <!-- cierre menu -->	
 		<div id="juego">	
-			<div id="panel1" class="panel">
-				<div class="j1">
-					<h1></h1>
-				</div>
+			<div class="row">
+				
+				<div id="panel1" class="panel">
+					<div class="j1">
+						<h1></h1>
+					</div>
 
-				<div class="j2">
-					
-				</div>
-			</div><!--cierre panel1-->
-			
-			<div id="tablero">
-			<img src="images/tablero.jpg" class="imgTablero">
-			</div><!--cierre tablero-->
-			
-			<div id="panel2" class="panel">
-			</div><!--cierre panel2-->
+					<div class="j2">
+						
+					</div>
+				</div><!--cierre panel1-->
+				
+				<div id="tablero">
+				<img src="images/tablero.jpg" class="imgTablero">
+				</div><!--cierre tablero-->
+				
+				<div id="panel2" class="panel">
+				</div><!--cierre panel2-->
+
+			</div>
+
+			<div class="row">
+				
+				<div id="panel3">
+					<a href="">papa</a>
+				</div><!-- cierre panel3 -->
+
+			</div>
 		</div><!--cierre juego-->
 	</body>
 </html>
