@@ -13,17 +13,68 @@ $usuarioLocal = $_SESSION['objUsu'];
 		<link rel="stylesheet" href="assets/css/juego.css" />
 		<link rel="shortcut icon" href="ico.ico">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
-		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js'></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<style>.punto{
+    width: 2px;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+}</style>
 		<script>
-			if(ev.offsetX == undefined){ // para firefox
-			    x = ev.pageX - $(this).offset().left;
-			    y = ev.pageY - $(this).offset().top;
-			}
-			else{ // chrome
-			    x = ev.offsetX;
-			    y = ev.offsetY;
-			}
-			alert(x + y);
+
+			$(function () {
+		    	// Ubico el tablero en la pantalla
+		        var elemento = $("#tablero");
+				var posicion = elemento.position();
+
+			    // funcion que obtiene el valor entero de una propiedad css
+			    function getNumericStyleProperty(style, prop){
+			        return parseInt(style.getPropertyValue(prop),10);
+			    }
+
+			    // evitamos redibujar al clickear sobre un punto ya existente
+			    $('#tablero').on('click', '.punto', function(e){
+			        e.stopPropagation();
+			        return false;
+			    })
+
+			    $('#tablero').click(function(ev){
+			        if(ev.offsetX == undefined) // para firefox
+			        {
+			            x = ev.pageX- $(this).offset().left;
+			            y = ev.pageY-$(this).offset().top;
+			        }
+			        else // chrome
+			        {
+			            x = ev.offsetX;
+			            y = ev.offsetY;
+			        }
+
+			       
+			        // Tomando posicion en el tablero
+			        // Considerando bordes
+			        var style = getComputedStyle(this,null) ;
+			        var borderTop = getNumericStyleProperty(style,"border-top-width") ;
+			        var borderLeft = getNumericStyleProperty(style,"border-left-width") ;
+			        y += borderTop + posicion.top ;
+			        x += borderLeft + posicion.left ;
+			        // console.log('x,y : ' + x + ',' + y);
+
+			        
+			        // Tomando posicion sin el tablero
+			        var x_ = ev.pageX - this.offsetLeft;
+			        var y_ = ev.pageY - this.offsetTop;
+			        // considerando bordes
+			        y_ += borderTop ;
+			        x_ += borderLeft ;
+			        // console.log('x_,y_ : ' + x_ + ',' + y_);
+
+			        
+			        alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
+			    });
+			})
+			
 		</script>
 	</head>
 	<body>
