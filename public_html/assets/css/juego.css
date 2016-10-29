@@ -71,7 +71,7 @@ body {
 
 #juego{
     width: 100%;
-    margin: 50px auto 0;
+    margin: 74px auto 0;
     display: block;
 }
 
@@ -124,7 +124,7 @@ body {
     box-sizing: border-box;
     float: left;
     text-align: center;
-    margin: 0 auto;
+    margin: 20px auto 50px;
     display: inline-block;
     background-color: rgba(0,0,0,0.85);
     color: white;
