@@ -3,8 +3,20 @@ require('juego/usuario.php');
 session_start();
 $usuarioLocal = $_SESSION['objUsu'];
 
-$usuarioLocal->setestado("conectado");
-$usuarioLocal->actualizar();
+if ($_GET['accion']==null) {
+	$usuarioLocal->setestado("conectado");
+	$usuarioLocal->actualizar();
+}
+elseif ($_GET['accion']=="1") {
+	$usuarioLocal->setestado("buscando");
+	$usuarioLocal->actualizar();
+} 
+elseif ($_GET['accion']=="3") {
+	$usuarioLocal->setestado("desconectado");
+	$usuarioLocal->actualizar();
+	session_destroy();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,23 +32,6 @@ $usuarioLocal->actualizar();
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 		<script type="text/javascript">
-			function salir(){
-				var salir = 1;
-			
-				</script><?php
-					$salir = "<script> document.write(salir) </script>";
-					
-					//if ($salir == 1){
-						// echo "aaa";
-						// header("Location:index.html");
-						// $usuarioLocal->setestado("desconectado");
-						// $usuarioLocal->actualizar();
-						// session_destroy();
-					//}
-				?><script>
-				salir = 0;
-			}
-
 			$(function () {
 		    	// Ubico el tablero en la pantalla
 		        var elemento = $("#tablero");
@@ -89,25 +84,13 @@ $usuarioLocal->actualizar();
 			    });
 			});
 
-			//function jugar(){
-			//	var jugar=1;
-			//	<?php
-			//		if (document.write(jugar) == 1){
-			//			$usuarioLocal->setestado("buscando");
-			//			$usuarioLocal->actualizar();
-			//		}
-			//	?>
-			//};
-
-
 </script>	
 	</head>
 	<body>
-	<a href="#"><?php echo $salir; ?></a>
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $usuarioLocal->getnombre(); ?></li>
-				<a href="#" onclick="salir();"><li>SALIR</li></a>
+				<a href="game.php?accion=3"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
 				<li>PESOS $<?php echo $usuarioLocal->getplata(); ?></li>	
 			</ul>
@@ -127,7 +110,7 @@ $usuarioLocal->actualizar();
 				
 				<div id="tablero">
 				<!-- <img src="images/tablero.jpg" class="imgTablero"> -->
-				<a href="#" onclick="jugar()">► PLAY</a>
+				<a href="game.php?accion=1">► PLAY</a>
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
