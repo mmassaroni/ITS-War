@@ -86,7 +86,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 				
 				<div id="panel1" class="panel">
 					<div class="j1">
-						<h1></h1>
+						<h1><?php echo $usuarioLocal->getnombre(); ?></h1>
 					</div>
 
 					<div class="j2">
@@ -95,7 +95,8 @@ $usuarioLocal = $_SESSION['objUsu'];
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-				<img src="images/tablero.jpg" class="imgTablero">
+				<!-- <img src="images/tablero.jpg" class="imgTablero"> -->
+				<a href="#">► PLAY</a>
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
@@ -106,7 +107,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 			<div class="row">
 				
 				<div id="panel3">
-					<a href="">papa</a>
+
 				</div><!-- cierre panel3 -->
 
 			</div>

@@ -10,6 +10,12 @@ body {
     background-size: cover;
 }
 
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
 /* HEAD */
 
 #menu {
@@ -82,6 +88,9 @@ body {
 }
 
 #tablero{
+    background-image: url("/images/tablero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: block;
     width: 500px;
     height: 500px;
