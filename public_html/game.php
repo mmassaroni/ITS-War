@@ -94,7 +94,7 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-				<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play"></a>
+				<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png"></a>
 				<!-- The Modal -->
 				<div id="myModal" class="modal">
 
