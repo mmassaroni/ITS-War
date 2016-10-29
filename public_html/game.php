@@ -1,28 +1,8 @@
 <?php 
-require('juego/usuario.php');
-session_start();
-$usuarioLocal = $_SESSION['objUsu'];
-
-if ($_GET['accion']==null) {
-	$usuarioLocal->setestado("conectado");
-	$usuarioLocal->actualizar();
-}
-elseif ($_GET['accion']=="1") {
-	$usuarioLocal->setestado("buscando");
-	$usuarioLocal->actualizar();
-}
-elseif ($_GET['accion']=="2") {
-	$usuarioLocal->setestado("jugando");
-	$usuarioLocal->actualizar();
-	session_destroy();
-} 
-elseif ($_GET['accion']=="3") {
-	$usuarioLocal->setestado("desconectado");
-	$usuarioLocal->actualizar();
-	session_destroy();
-	header("location:/");
-}
-
+	require('juego/fachada/fachada.php');
+	session_start();
+	$usuarioLocal = $_SESSION['objUsu'];
+	estados($usuarioLocal);
 ?>
 
 <!DOCTYPE html>

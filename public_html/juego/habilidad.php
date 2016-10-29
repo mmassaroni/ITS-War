@@ -3,14 +3,16 @@
 	class habilidad{
 
 		private $id;
+		private $personaje;
 		private $nombre;
 		private $costo_energia;
 		private $efecto;
 		private $potencia;
 		private $tipo;
 
-		public function __construct($id, $nombre, $costo_energia, $efecto, $potencia, $tipo){
+		public function __construct($id, $personaje, $nombre, $costo_energia, $efecto, $potencia, $tipo){
 			$this->id=$id;
+			$this->personaje=$personaje;
 			$this->nombre=$nombre;
 			$this->costo_energia=$costo_energia;
 			$this->efecto=$efecto;

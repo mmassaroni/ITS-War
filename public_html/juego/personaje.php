@@ -2,11 +2,10 @@
 
 	include_once "habilidad.php";
 
-	class personaje{
+	class Personaje{
 
 		private $id;
 		private $nombre;
-		private $precio;
 		private $imgCuerpo;
 		private $imgFicha;
 		private $fuerza;
@@ -15,12 +14,12 @@
 		private $alcance;
 		private $vida;
 		private $energia;
+		private $precio;
 		private $habilidad;
 
-		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $alcance, $vida, $energia){
+		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $alcance, $vida, $energia, $precio, $habilidad=null){
 			$this->id=$id;
 			$this->nombre=$nombre;
-			$this->precio=$precio;
 			$this->imgCuerpo=$imgCuerpo;
 			$this->imgFicha=$imgFicha;
 			$this->fuerza=$fuerza;
@@ -29,6 +28,8 @@
 			$this->alcance=$alcance;
 			$this->vida=$vida;
 			$this->energia=$energia;
+			$this->precio=$precio;
+			$this->habilidad=$habilidad;
 		}
 
 		// ####################################                   abre get y set
