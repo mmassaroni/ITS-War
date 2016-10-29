@@ -19,8 +19,20 @@ $usuarioLocal->actualizar();
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js'></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-		<script>
+		<script type="text/javascript">
+			function salir(){
 
+				var salir=1;
+				
+				alert(salir);
+				// <?php 
+				// 	if (document.write(salir) == 1){
+				// 		$usuarioLocal->setestado("desconectado");
+				// 		$usuarioLocal->actualizar();
+				// 		session_destroy();
+				// 	}
+				// ?>
+			};
 			$(function () {
 		    	// Ubico el tablero en la pantalla
 		        var elemento = $("#tablero");
@@ -73,23 +85,21 @@ $usuarioLocal->actualizar();
 			    });
 			});
 
-			function jugar(){
-				<?php 
-					$usuarioLocal->setestado("buscando");
-					$usuarioLocal->actualizar();
-				?>
-			}
+			//function jugar(){
+			//	var jugar=1;
+			//	<?php
+			//		if (document.write(jugar) == 1){
+			//			$usuarioLocal->setestado("buscando");
+			//			$usuarioLocal->actualizar();
+			//		}
+			//	?>
+			//};
 
-			function salir(){
-				<?php 
-					$usuarioLocal->setestado("desconectado");
-					$usuarioLocal->actualizar();
-					session_destroy();
-				?>
-			};
-		</script>
+
+</script>	
 	</head>
 	<body>
+		<button onclick="salir()">salir</button>
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $usuarioLocal->getnombre(); ?></li>
@@ -113,7 +123,7 @@ $usuarioLocal->actualizar();
 				
 				<div id="tablero">
 				<!-- <img src="images/tablero.jpg" class="imgTablero"> -->
-				<a href="#" onclick="salir()">► PLAY</a>
+				<a href="#" onclick="jugar()">► PLAY</a>
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">

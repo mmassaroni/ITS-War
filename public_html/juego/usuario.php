@@ -95,7 +95,7 @@
 
 		public function actualizar(){
 			$db = new Conexion();
-			$sql = $db->query("update usuario set nombre = '". $this->nombre ."', pass = '". $this->pass ."', email = '". $this->email ."', estado = '". $this->estado ."', plata = ". $this->plata .""); or die("ERROR CON LA BD");
+			$sql = $db->query("update usuario set nombre = '". $this->nombre ."', pass = '". $this->pass ."', email = '". $this->email ."', estado = '". $this->estado ."', plata = ". $this->plata ." where id = ". $this->id ."") or die("ERROR CON LA BD");
 			mysqli_close($db);
 		}
 	
