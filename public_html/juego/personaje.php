@@ -54,7 +54,7 @@
 			return $this->$precio;
 		}
 
-		public function setid($precio){
+		public function setprecio($precio){
 			$this->precio=$precio;
 		}
 
