@@ -70,6 +70,12 @@ body {
 #juego{
     width: 100%;
     margin: 50px auto 0;
+    display: block;
+}
+
+.row {
+    margin: 0 auto;
+    width: 100%;
     display: flex;
 }
 
@@ -82,7 +88,7 @@ body {
     float: left;
     text-align: center;
     margin: 0 auto;
-    display: inline-block;;
+    display: inline-block;
     background-color: rgba(0,0,0,0.85);
     color: white;
 }
@@ -106,4 +112,18 @@ body {
 .imgTablero {
     width: 100%;
     height: 100%;
+}
+
+#panel3 {
+    width: 500px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 3px;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.85);
+    color: white;
 }
