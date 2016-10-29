@@ -21,18 +21,22 @@ $usuarioLocal->actualizar();
 
 		<script type="text/javascript">
 			function salir(){
+				var salir = 1;
+			
+				</script><?php
+					$salir = "<script> document.write(salir) </script>";
+					
+					//if ($salir == 1){
+						// echo "aaa";
+						// header("Location:index.html");
+						// $usuarioLocal->setestado("desconectado");
+						// $usuarioLocal->actualizar();
+						// session_destroy();
+					//}
+				?><script>
+				salir = 0;
+			}
 
-				var salir=1;
-				
-				alert(salir);
-				// <?php 
-				// 	if (document.write(salir) == 1){
-				// 		$usuarioLocal->setestado("desconectado");
-				// 		$usuarioLocal->actualizar();
-				// 		session_destroy();
-				// 	}
-				// ?>
-			};
 			$(function () {
 		    	// Ubico el tablero en la pantalla
 		        var elemento = $("#tablero");
@@ -99,11 +103,11 @@ $usuarioLocal->actualizar();
 </script>	
 	</head>
 	<body>
-		<button onclick="salir()">salir</button>
+	<a href="#"><?php echo $salir; ?></a>
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $usuarioLocal->getnombre(); ?></li>
-				<a href="/" onclick="salir()"><li>SALIR</li></a>
+				<a href="#" onclick="salir();"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
 				<li>PESOS $<?php echo $usuarioLocal->getplata(); ?></li>	
 			</ul>
