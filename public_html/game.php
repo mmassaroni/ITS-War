@@ -2,6 +2,9 @@
 require('juego/usuario.php');
 session_start();
 $usuarioLocal = $_SESSION['objUsu'];
+
+$usuarioLocal->setestado("conectado");
+$usuarioLocal->actualizar();
 ?>
 
 <!DOCTYPE html>
@@ -68,15 +71,29 @@ $usuarioLocal = $_SESSION['objUsu'];
 			        
 			        alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
 			    });
-			})
-			
+			});
+
+			function jugar(){
+				<?php 
+					$usuarioLocal->setestado("buscando");
+					$usuarioLocal->actualizar();
+				?>
+			}
+
+			function salir(){
+				<?php 
+					$usuarioLocal->setestado("desconectado");
+					$usuarioLocal->actualizar();
+					session_destroy();
+				?>
+			};
 		</script>
 	</head>
 	<body>
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $usuarioLocal->getnombre(); ?></li>
-				<a href="/"><li>SALIR</li></a>
+				<a href="/" onclick="salir()"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
 				<li>PESOS $<?php echo $usuarioLocal->getplata(); ?></li>	
 			</ul>
@@ -96,7 +113,7 @@ $usuarioLocal = $_SESSION['objUsu'];
 				
 				<div id="tablero">
 				<!-- <img src="images/tablero.jpg" class="imgTablero"> -->
-				<a href="#">► PLAY</a>
+				<a href="#" onclick="salir()">► PLAY</a>
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
