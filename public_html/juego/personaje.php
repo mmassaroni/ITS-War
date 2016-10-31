@@ -15,9 +15,9 @@
 		private $vida;
 		private $energia;
 		private $precio;
-		private $habilidad;
+		private $habilidades;
 
-		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $alcance, $vida, $energia, $precio, $habilidad=null){
+		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $alcance, $vida, $energia, $precio, $habilidades=null){
 			$this->id=$id;
 			$this->nombre=$nombre;
 			$this->imgCuerpo=$imgCuerpo;
@@ -29,7 +29,7 @@
 			$this->vida=$vida;
 			$this->energia=$energia;
 			$this->precio=$precio;
-			$this->habilidad=$habilidad;
+			$this->habilidades=$habilidades;
 		}
 
 		// ####################################                   abre get y set
@@ -120,6 +120,14 @@
 
 		public function setenergia($energia){
 			$this->energia=$energia;
+		}
+
+		public function gethabilidades(){
+			return $this->habilidades;
+		}
+
+		public function sethabilidades($habilidades){
+			$this->habilidades=$habilidades;
 		}
 
 		// ####################################               cierre de get y set

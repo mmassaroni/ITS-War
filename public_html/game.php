@@ -1,8 +1,10 @@
 <?php 
 	require('juego/fachada/fachada.php');
 	session_start();
-	$usuarioLocal = $_SESSION['objUsu'];
-	estados($usuarioLocal);
+	$_SESSION['personajes'] = array();
+	$_SESSION['personajes'] = instanciar_Personajes_Habilidades();
+	
+	estados($_SESSION['objUsu']);
 ?>
 
 <!DOCTYPE html>
@@ -74,10 +76,14 @@
 	<body>
 		<div id="menu">
 			<ul>
-				<li class="usuario"><?php echo $usuarioLocal->getnombre(); ?></li>
+				<li class="usuario"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
+				<li><?php 		
+				    	echo $_SESSION['personajes'][0]->gethabilidades()[1]->getnombre();
+				    	//print_r($_SESSION['personajes']);
+						?></li>
 				<a href="game.php?accion=3"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
-				<li>PESOS $<?php echo $usuarioLocal->getplata(); ?></li>	
+				<li>PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>	
 			</ul>
 		</div> <!-- cierre menu -->	
 		<div id="juego">	
@@ -85,7 +91,7 @@
 				
 				<div id="panel1" class="panel">
 					<div class="j1">
-						<h1><?php echo $usuarioLocal->getnombre(); ?></h1>
+						<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
 					</div>
 
 					<div class="j2">

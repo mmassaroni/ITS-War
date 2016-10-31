@@ -1,6 +1,6 @@
 <?php 
 
-	class habilidad{
+	class Habilidad{
 
 		private $id;
 		private $personaje;

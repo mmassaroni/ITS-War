@@ -8,6 +8,7 @@
 		private $pass;
 		private $estado;
 		private $plata;
+		private $personajes;
 
 		public function __construct($id=null, $nombre=null, $email=null, $pass, $estado=null, $plata=null){
 			$this->id=$id;
@@ -16,6 +17,7 @@
 			$this->pass=$pass;
 			$this->estado=$estado;
 			$this->plata=$plata;
+			$this->personajes=$personajes;
 		}
 
 		// ####################################                   abre get y set
