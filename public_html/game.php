@@ -172,7 +172,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-
+					
 				</div><!-- cierre panel3 -->
 
 			</div>
