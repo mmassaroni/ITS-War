@@ -173,6 +173,18 @@
 				
 				<div id="panel3">
 					
+
+					<!-- ESTO EN REALIDAD VA COMO EN EL ELEGIR PERSONAJE -->
+					<div class="dropdown">
+					<button onclick="myFunction()" class="dropbtn">ATACAR</button>
+					  <div id="myDropdown" class="dropdown-content">
+					    <a href="#home">BÁSICO</a>
+					    <a href="#about">MEDIO</a>
+					    <a href="#contact">ALTO</a>
+					  </div>
+					</div>
+					<!-- ESTO EN REALIDAD VA COMO EN EL ELEGIR PERSONAJE -->
+
 				</div><!-- cierre panel3 -->
 
 			</div>
