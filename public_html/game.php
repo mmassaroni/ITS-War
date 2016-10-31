@@ -77,10 +77,6 @@
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
-				<li><?php 		
-				    	echo $_SESSION['personajes'][0]->gethabilidades()[1]->getnombre();
-				    	//print_r($_SESSION['personajes']);
-						?></li>
 				<a href="game.php?accion=3"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
 				<li>PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>	
@@ -92,41 +88,76 @@
 				<div id="panel1" class="panel">
 					<div class="j1">
 						<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
+						<div class="row">
+							<div class="img-per"><img src="" title=""></div>
+							<div class="valores-per">
+								<h2>VIDA</h2><img src="">
+								<h2>FUERZA</h2><img src="">
+								<h2>ENERGÍA</h2><img src="">
+								<h2>RESISTENCIA</h2><img src="">
+							</div>
+						</div>
 					</div>
-
+					<hr/>
 					<div class="j2">
-						
+						<h1><!-- Nombre del jugador --></h1>
+						<div class="row">
+							<div class="img-per"><img src="" title=""></div>
+							<div class="valores-per">
+								<h2>VIDA</h2><img src="" title="">
+								<h2>FUERZA</h2><img src="" title="">
+								<h2>ENERGÍA</h2><img src="" title="">
+								<h2>RESISTENCIA</h2><img src="" title="">
+							</div>
+						</div>
 					</div>
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-				<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
-				<!-- The Modal -->
-				<div id="myModal" class="modal">
+					<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
+					<!-- The Modal -->
+					<div id="myModal" class="modal">
 
-				  <!-- Modal content -->
-				  <div class="modal-content">
-				    <div class="modal-header">
-				      <span class="close">×</span>
-				      <h2>Modal Header</h2>
-				    </div>
-				    <div class="modal-body">
-				      <p>Some text in the Modal Body</p>
-				      <p>Some other text...</p>
-				    </div>
-				    <div class="modal-body">
-				      <p>Some text in the Modal Body</p>
-				      <p>Some other text...</p>
-				    </div>
-				    <div class="modal-footer">
-				      <h3>Modal Footer</h3>
-				    </div>
-				  </div>
+					  <!-- Modal content -->
+					  <div class="modal-content">
+					    <div class="modal-header">
+					      <span class="close">×</span>
+					      <h2>Elige un personaje</h2>
+					    </div>
+					    <div class="modal-body">
+					      <!-- Acá van los personajes del cliente -->
+					    </div>
+					  </div>
 
-				</div>
+					</div>
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
+					<div class="j3">
+						<h1><!-- Nombre del jugador --></h1>
+						<div class="row">
+							<div class="img-per"><img src="" title=""></div>
+							<div class="valores-per">
+								<h2>VIDA</h2><img src="">
+								<h2>FUERZA</h2><img src="">
+								<h2>ENERGÍA</h2><img src="">
+								<h2>RESISTENCIA</h2><img src="">
+							</div>
+						</div>
+					</div>
+					<hr/>
+					<div class="j4">
+						<h1><!-- Nombre del jugador --></h1>
+						<div class="row">
+							<div class="img-per"><img src="" title=""></div>
+							<div class="valores-per">
+								<h2>VIDA</h2><img src="" title="">
+								<h2>FUERZA</h2><img src="" title="">
+								<h2>ENERGÍA</h2><img src="" title="">
+								<h2>RESISTENCIA</h2><img src="" title="">
+							</div>
+						</div>
+					</div>
 				</div><!--cierre panel2-->
 
 			</div>
