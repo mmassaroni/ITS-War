@@ -100,7 +100,7 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-				<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png"></a>
+				<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
 				<!-- The Modal -->
 				<div id="myModal" class="modal">
 
@@ -145,12 +145,14 @@
 
 			// Get the button that opens the modal
 			var btn = document.getElementById("myBtn");
+			var btn_play = document.getElementById("Btn_play");
 
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close")[0];
 
 			// When the user clicks the button, open the modal
 			function mostrarPersonajes() {
+				btn_play.style.display = "none";
 			    modal.style.display = "block";
 			}
 			
@@ -158,14 +160,17 @@
 
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() {
-			    modal.style.display = "none";
+			    window.location="game.php";
 			}
 
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
-			    if (event.target == modal) {
-			        modal.style.display = "none";
-			    }
+			    window.location="game.php";
+			}
+
+			// Hace una transicion de opacidad
+			function mostrarTablero() {
+				myBtn.style.backgroundColor = "rgba(0,0,0,0)";
 			}
 		</script>
 	</body>

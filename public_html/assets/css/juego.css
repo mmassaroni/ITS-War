@@ -116,6 +116,8 @@ body {
 #tablero a { 
     display: table-cell;
     vertical-align: middle;
+    background-color: rgba(0,0,0,0.5);
+    transition: background-color 0.8s;
 }
 
 .imgTablero {
