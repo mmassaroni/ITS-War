@@ -1,27 +1,27 @@
 <?php 
-	require('juego/usuario.php');
+	require('juego/usuarios.php');
 	require('juego/personaje.php');
 
 	function estados($usuario){
 		if ($_GET['accion']==null) {
 			$usuario->setestado("conectado");
-			$usuario->actualizar();
+			$usuario->actualizar($usuario);
 		}
 		elseif ($_GET['accion']=="eligiendo") {
 
 		}
 		elseif ($_GET['accion']=="buscando") {
 			$usuario->setestado("buscando");
-			$usuario->actualizar();
+			$usuario->actualizar($usuario);
 			//aca va el codigo para armar la partida
 		}
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");
-			$usuario->actualizar();
+			$usuario->actualizar($usuario);
 		} 
 		elseif ($_GET['accion']=="salir") {
 			$usuario->setestado("desconectado");
-			$usuario->actualizar();
+			$usuario->actualizar($usuario);
 			session_destroy();
 			header("location:/");
 		}

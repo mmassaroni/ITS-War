@@ -1,11 +1,13 @@
 <?php 
 
-require('juego/usuario.php');
-
+require('juego/usuarios.php');
+session_start();
 if ($_GET['log']==1) {
-	Usuario::login($_REQUEST['usu_email'], $_REQUEST['pass']);
+	$_SESSION['objUsu'] = Usuarios::login($_REQUEST['usu_email'], $_REQUEST['pass']);
+	header('Location:game.php');
 } elseif ($_GET['make']==1) {
-	Usuario::registro($_REQUEST['usu'], $_REQUEST['email'], $_REQUEST['pass']);
+	$_SESSION['objUsu'] = Usuarios::registro($_REQUEST['usu'], $_REQUEST['email'], $_REQUEST['pass']);
+	header("Location:game.php");
 }
 
 ?>
