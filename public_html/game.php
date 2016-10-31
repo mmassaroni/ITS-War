@@ -1,8 +1,8 @@
 <?php 
 	require('juego/fachada/fachada.php');
 	session_start();
-	$_SESSION['personajes'] = array();
-	$_SESSION['personajes'] = instanciar_Personajes_Habilidades();
+	//$_SESSION['personajes'] = array();
+	$_SESSION['personajes'] = Personajes::instanciar_Personajes_Habilidades();
 	$_SESSION['objUsu']->setpersonajes(personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']));
 	
 	estados($_SESSION['objUsu']);

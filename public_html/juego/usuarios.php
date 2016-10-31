@@ -26,9 +26,9 @@
 			return $usuario;
 		}
 
-		public function actualizar(){
+		public static function actualizar($usuario){
 			$db = new Conexion();
-			$sql = $db->query("update usuario set nombre = '". $this->nombre ."', pass = '". $this->pass ."', email = '". $this->email ."', estado = '". $this->estado ."', plata = ". $this->plata ." where id = ". $this->id ."") or die("ERROR CON LA BD");
+			$sql = $db->query("update usuario set nombre = '". $usuario->getnombre() ."', pass = '". $usuario->getpass() ."', email = '". $usuario->getemail() ."', estado = '". $usuario->getestado() ."', plata = ". $usuario->getplata() ." where id = ". $usuario->getid() ."") or die("ERROR CON LA BD");
 			mysqli_close($db);
 		}
 	}

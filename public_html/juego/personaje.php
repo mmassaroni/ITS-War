@@ -1,6 +1,6 @@
 <?php 
 
-	include_once "habilidad.php";
+	require('habilidades.php');
 
 	class Personaje{
 
