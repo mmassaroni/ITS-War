@@ -3,7 +3,7 @@
 	session_start();
 	$_SESSION['personajes'] = array();
 	$_SESSION['personajes'] = instanciar_Personajes_Habilidades();
-	
+	personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']);
 	estados($_SESSION['objUsu']);
 ?>
 

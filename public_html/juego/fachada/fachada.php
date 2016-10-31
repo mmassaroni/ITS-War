@@ -2,7 +2,7 @@
 	require('juego/usuario.php');
 	require('juego/personaje.php');
 
-	function estados($usuario){
+	function estados($usuario, $personajes){
 		if ($_GET['accion']==null) {
 			$usuario->setestado("conectado");
 			$usuario->actualizar();
@@ -10,7 +10,7 @@
 		elseif ($_GET['accion']=="1") {
 			$usuario->setestado("buscando");
 			$usuario->actualizar();
-			//mostrarPersonajes($usuario);
+			personajesDelUsuario($usuario, $personajes);
 
 		}
 		elseif ($_GET['accion']=="2") {
@@ -51,22 +51,8 @@
 		mysqli_close($db);
 		return $personajes;
 	} 
-	function mostrarPersonajes($usuario){
-		//NO ANDA HAY QUE CAMBIAR TODO
-		$db = new Conexion();
-		$personajes=array();
-		$habilidades=array();
+	function personajesDelUsuario($usuario, $personajes){
 		
-		$registrosPer = $db->query("select p.* from personaje p, usu_tiene_per utp, usuario u where u.id = utp.usuario and utp.personaje = p.id and u.id = ". $usuario->getid() .";") or die("ERROR CON LA BD");
-
-		while($registroPer = mysqli_fetch_array($registrosPer, MYSQLI_ASSOC)){
-			header('location:index.html');
-			$objPer = new Personaje($registroPer["id"], $registroPer["nombre"], $registroPer["imgCuerpo"], $registroPer["imgFicha"], $registroPer["fuerza"], $registroPer["movimiento"], $registroPer["resistencia"], $registroPer["alcance"], $registroPer["vida"], $registroPer["energia"], $registroPer["precio"]);
-
-
-		}
-		mysqli_close($db);
-
 	}
 
 ?>

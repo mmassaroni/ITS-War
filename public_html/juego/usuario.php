@@ -10,7 +10,7 @@
 		private $plata;
 		private $personajes;
 
-		public function __construct($id=null, $nombre=null, $email=null, $pass, $estado=null, $plata=null){
+		public function __construct($id=null, $nombre=null, $email=null, $pass, $estado=null, $plata=null, $personajes=null){
 			$this->id=$id;
 			$this->nombre=$nombre;
 			$this->email=$email; 
@@ -68,6 +68,14 @@
 
 		public function setplata($plata){
 			$this->plata=$plata;
+		}
+
+		public function getpersonajes(){
+			return $this->personajes;
+		}
+
+		public function setpersonajes($personajes){
+			$this->personajes=$personajes;
 		}
 		// ####################################              cierre de get y set
 
