@@ -3,7 +3,8 @@
 	session_start();
 	$_SESSION['personajes'] = array();
 	$_SESSION['personajes'] = instanciar_Personajes_Habilidades();
-	personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']);
+	$_SESSION['objUsu']->setpersonajes(personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']));
+	
 	estados($_SESSION['objUsu']);
 ?>
 
@@ -77,7 +78,7 @@
 		<div id="menu">
 			<ul>
 				<li class="usuario"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
-				<a href="game.php?accion=3"><li>SALIR</li></a>
+				<a href="game.php?accion=salir"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
 				<li>PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>	
 			</ul>
@@ -114,21 +115,27 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-					<a href="game.php?accion=1" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
+					<a href="game.php?accion=eligiendo" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
 
-					  <!-- Modal content -->
-					  <div class="modal-content">
-					    <div class="modal-header">
-					      <span class="close">×</span>
-					      <h2>Elige un personaje</h2>
-					    </div>
-					    <div class="modal-body">
-					      <!-- Acá van los personajes del cliente -->
-					    </div>
-					  </div>
-
+						<!-- Modal content -->
+						<div class="modal-content">
+						    <div class="modal-header">
+						      <span class="close">×</span>
+						      <h2>Elige un personaje</h2>
+						    </div>
+							<?php 
+								$personajesUsu = $_SESSION['objUsu']->getpersonajes();
+								foreach($personajesUsu as $personaje){
+									echo 
+									"<div class='modal-body'>
+										<h3>". $personaje->getnombre() ."</h3>
+										<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
+									</div>";
+								}
+							?>
+						</div>
 					</div>
 				</div><!--cierre tablero-->
 				
@@ -187,7 +194,7 @@
 			    modal.style.display = "block";
 			}
 			
-			<?php if ($_GET['accion'] == 1) {echo "mostrarPersonajes();";} ?>
+			<?php if ($_GET['accion'] == "eligiendo") {echo "mostrarPersonajes();";} ?>
 
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() {
