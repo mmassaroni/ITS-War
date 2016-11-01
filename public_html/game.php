@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/juego.css" />
 		<link rel="shortcut icon" href="ico.ico">
-		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Luckiest+Guy|Righteous|Open+Sans" rel="stylesheet">
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js'></script>
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
@@ -73,6 +73,19 @@
 			    });
 			});
 </script>	
+<style>	
+	<?php if ($_GET['tab'] == 1 ) {echo "
+		@-webkit-keyframes mostrarTablero {
+	    from {background-color: rgba(0,0,0,0.8);}
+	    to {background-color: rgba(0,0,0,0);}
+		}
+
+		@keyframes mostrarTablero {
+		    from {background-color: rgba(0,0,0,0.8);}
+		    to {background-color: rgba(0,0,0,0);}
+		}
+	";} ?>	
+</style>
 	</head>
 	<body>
 		<ul class="topnav" id="myTopnav">
@@ -85,16 +98,6 @@
 		  </li>
 		</ul>
 
-
-
-		<!-- <div id="menu">
-			<ul>
-				<li class="usuario"><?php// echo $_SESSION['objUsu']->getnombre(); ?></li>
-				<a href="game.php?accion=salir"><li>SALIR</li></a>
-				<a href="#"><li>TIENDA</li></a>
-				<li>PESOS $<?php //echo $_SESSION['objUsu']->getplata(); ?></li>	
-			</ul>
-		</div> --> <!-- cierre menu -->	
 		<div id="juego">	
 			<div class="row">
 				
@@ -127,7 +130,7 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-					<div id="contPlay"><a href="game.php?accion=eligiendo" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a></div>
+					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href="game.php?accion=eligiendo" id="myBtn" <?php if ($_GET['accion'] != null) {echo "style=display:none";} ?>><img src="/images/Btn_play.png" id="Btn_play"></a></div>
 					
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
@@ -144,7 +147,7 @@
 									echo 
 									"<div class='modal-body'>
 										<h3>". $personaje->getnombre() ."</h3>
-										<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
+										<a href='game.php?&accion=buscando&tab=1&personaje=". $personaje->getid() ."'>Elegir este</a>
 									</div>";
 								}
 							?>
@@ -186,18 +189,8 @@
 				
 				<div id="panel3">
 					
-
-					<!-- ESTO EN REALIDAD VA COMO EN EL ELEGIR PERSONAJE -->
-					<div class="dropdown">
-					<button onclick="myFunction()" class="dropbtn">ATACAR</button>
-					  <div id="myDropdown" class="dropdown-content">
-					    <a href="#home">BÁSICO</a>
-					    <a href="#about">MEDIO</a>
-					    <a href="#contact">ALTO</a>
-					  </div>
-					</div>
-					<!-- ESTO EN REALIDAD VA COMO EN EL ELEGIR PERSONAJE -->
-
+					
+					
 				</div><!-- cierre panel3 -->
 
 			</div>
@@ -214,10 +207,9 @@
 
 			// When the user clicks the button, open the modal
 			function mostrarPersonajes() {
-				btn.style.display = "none";
 			    modal.style.display = "block";
 			}
-			
+
 			<?php if ($_GET['accion'] == "eligiendo") {echo "mostrarPersonajes();";} ?>
 
 			// When the user clicks on <span> (x), close the modal
@@ -225,41 +217,9 @@
 			    window.location="game.php";
 			}
 
-			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
-			    window.location="game.php";
-			}
-
 			// Hace una transicion de opacidad
 			function mostrarTablero() {
 				myBtn.style.backgroundColor = "rgba(0,0,0,0)";
-			}
-
-			
-			// #################
-			//  BOTON DE ATAQUE
-			// #################
-
-
-			/* When the user clicks on the button,
-			toggle between hiding and showing the dropdown content */
-			function myFunction() {
-			    document.getElementById("myDropdown").classList.toggle("show");
-			}
-
-			// Close the dropdown if the user clicks outside of it
-			window.onclick = function(event) {
-			  if (!event.target.matches('.dropbtn')) {
-
-			    var dropdowns = document.getElementsByClassName("dropdown-content");
-			    var i;
-			    for (i = 0; i < dropdowns.length; i++) {
-			      var openDropdown = dropdowns[i];
-			      if (openDropdown.classList.contains('show')) {
-			        openDropdown.classList.remove('show');
-			      }
-			    }
-			  }
 			}
 
 			// MENU
