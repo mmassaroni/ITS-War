@@ -53,7 +53,7 @@ body {
     float: right;
 }
 
-#menu ul li, a {
+#menu ul li, a, button {
     font-family: 'Luckiest Guy', cursive;
     text-transform: uppercase;
 }
@@ -116,8 +116,8 @@ body {
 #tablero a { 
     display: table-cell;
     vertical-align: middle;
-    background-color: rgba(0,0,0,0.5);
-    transition: background-color 0.8s;
+    background-color: rgba(0,0,0,0.8);
+    transition: background-color 1.5s;
 }
 
 .imgTablero {
@@ -138,6 +138,11 @@ body {
     background-color: rgba(0,0,0,0.85);
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#Btn_play {
+    border-radius: 100%;
+    box-shadow: 0 1px 185px 0 rgba(255, 255, 255, 0.2), 0 -3px 185px 0 rgba(255, 255, 255, 0.19);
 }
 
 
