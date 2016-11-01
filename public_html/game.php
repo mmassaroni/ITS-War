@@ -3,8 +3,8 @@
 	session_start();
 	//$_SESSION['personajes'] = array();
 	$_SESSION['personajes'] = Personajes::instanciar_Personajes_Habilidades();
-	$_SESSION['objUsu']->setpersonajes(personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']));
-	
+	//die($_SESSION['personajes']->getpersonajes()[0]->getnombre());
+	$_SESSION['objUsu']->setpersonajes(Personajes::personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']));
 	estados($_SESSION['objUsu']);
 ?>
 
@@ -126,8 +126,8 @@
 						      <h2>Elige un personaje</h2>
 						    </div>
 							<?php 
-								$personajesUsu = $_SESSION['objUsu']->getpersonajes();
-								foreach($personajesUsu as $personaje){
+								
+								foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
 									echo 
 									"<div class='modal-body'>
 										<h3>". $personaje->getnombre() ."</h3>

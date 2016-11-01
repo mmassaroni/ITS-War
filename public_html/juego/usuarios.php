@@ -3,7 +3,7 @@
 	require('conexion.php');
 
 	class Usuarios{
-		
+
 		public static function login($usu_email, $pass){
 			$db = new Conexion();
 			$sql = $db->query("select * from usuario where email = '" . $usu_email . "' and pass = '" . $pass . "' or nombre ='". $usu_email ."' and pass = '". $pass ."'") or die(header('Location:sesion.php?error=1'));

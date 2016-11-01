@@ -5,6 +5,14 @@
 	class Personajes{
 		private $colPersonajes = array();
 	
+		public function getpersonajes(){
+			return $this->colPersonajes;
+		}
+
+		public function setpersonajes($personajes){
+			$this->colPersonajes=$personajes;
+		}
+
 		public static function instanciar_Personajes_Habilidades(){
 			$db = new Conexion();
 			$personajes=new Personajes();
@@ -16,8 +24,6 @@
 
 				$objPer->setHabilidades(Habilidades::habilidadesPorPj($objPer));
 				$personajes->agregarPersonaje($objPer);
-				$dosHabilidades = null;
-				mysqli_close($db2);
 			}
 			mysqli_close($db);
 			return $personajes;
@@ -28,8 +34,8 @@
 			$pjsDelUsu = new Personajes();
 			$registrosPerDelUsu = $db->query("select personaje from usu_tiene_per where usuario=". $usuario->getid()) or die("ERROR CON LA BD");
 			while($registro = $registrosPerDelUsu->fetch_array()){
-				foreach($personajes as $personaje){
-					if($personaje->getid() == $registro[0]){
+				foreach($personajes->getpersonajes() as $personaje){
+					if($personaje->getid() == $registro['personaje']){
 						$pjsDelUsu->agregarPersonaje($personaje);
 					}
 				}
@@ -38,7 +44,7 @@
 			return $pjsDelUsu;
 		}
 
-		public static function agregarPersonaje($personaje){
+		public function agregarPersonaje($personaje){
 			array_push($this->colPersonajes, $personaje);
 		}
 
