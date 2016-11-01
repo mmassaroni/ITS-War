@@ -18,13 +18,92 @@ body {
 
 /* HEAD */
 
-#menu {
-    height: auto;
-    width: 100%;
-    
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0B486B;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#menu ul {
+ul.topnav li {float: right;}
+ul.topnav li.usuario {
+    float: left;
+    background-color: #3B8686;
+}
+ul.topnav li.ex {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 0.5em 4em;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 1.5em;
+  cursor: default;
+}
+
+ul.topnav li a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 0.5em 4em;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 1.5em;
+}
+
+ul.topnav li a:hover {background-color: #79BD9A;}
+ul.topnav.responsive li a:hover {background-color: #79BD9A;}
+
+ul.topnav li.icon {display: none;}
+
+@media screen and (max-width:1170px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:1170px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li, ul.topnav.responsive li a {
+    float: none;
+    display: block;
+    text-align: center;
+    background-color: #093853;
+  }
+  ul.topnav li.usuario {
+    text-align: left;
+    background-color: #0b486b;
+  }
+}
+
+
+/*#menu ul li {
+    display: inline-block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 4em;
+    padding-left: 4em;
+    color: white;
+    font-size: 1.5em;
+    float: right;
+}*/
+
+/*#menu {
+    height: auto;
+    width: 100%;
+}*/
+
+/*#menu ul {
     position: absolute;
     top: 0;
     width: 100%;
@@ -35,44 +114,35 @@ body {
     background-color: #0B486B;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);   
-}
+}*/
 
-#menu ul .usuario {
-	float: left;
-	background-color: #3B8686;
-}
+/*#menu ul .usuario {
+    float: left;
+    background-color: #3B8686;
+}*/
 
-#menu ul li {
-    display: inline-block;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-right: 4em;
-    padding-left: 4em;
-    color: white;
-    font-size: 1.5em;
-    float: right;
-}
 
-#menu ul li, a, button {
+ul.topnav li.ex, a, button {
     font-family: 'Luckiest Guy', cursive;
     text-transform: uppercase;
 }
 
-#menu ul li a {
+/*#menu ul li a {
     text-decoration: none;
     color: white;
-}
+}*/
 
-#menu a:hover li {
+/*#menu a:hover li {
     background-color: #79BD9A;
-}
+}*/
+
 /* CIERRE HEAD */
 
 /*PANELES Y TABLERO*/
 
 #juego{
     width: 100%;
-    margin: 74px auto 0;
+    margin: 20px auto 0;
     display: block;
 }
 
@@ -113,11 +183,16 @@ body {
     border-radius: 3px;
 }
 
-#tablero a { 
+#tablero #contPlay { 
     display: table-cell;
     vertical-align: middle;
     background-color: rgba(0,0,0,0.8);
     transition: background-color 1.5s;
+}
+
+#tablero #Btn_play {
+    box-shadow: 0 1px 185px 0 rgba(255, 255, 255, 0.2), 0 -3px 185px 0 rgba(255, 255, 255, 0.19);
+    border-radius: 100%;
 }
 
 .imgTablero {
@@ -140,8 +215,7 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#Btn_play {
-    border-radius: 100%;
+#Btn_play:hover {
     box-shadow: 0 1px 185px 0 rgba(255, 255, 255, 0.2), 0 -3px 185px 0 rgba(255, 255, 255, 0.19);
 }
 

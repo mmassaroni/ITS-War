@@ -75,14 +75,26 @@
 </script>	
 	</head>
 	<body>
-		<div id="menu">
+		<ul class="topnav" id="myTopnav">
+		  <li class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
+		  <li><a href="game.php?accion=salir">SALIR</a></li>
+		  <li><a href="#tienda">TIENDA</a></li>
+		  <li class="ex">PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>
+		  <li class="icon">
+		    <a href="javascript:void(0);" onclick="myFunction()">≡</a>
+		  </li>
+		</ul>
+
+
+
+		<!-- <div id="menu">
 			<ul>
-				<li class="usuario"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
+				<li class="usuario"><?php// echo $_SESSION['objUsu']->getnombre(); ?></li>
 				<a href="game.php?accion=salir"><li>SALIR</li></a>
 				<a href="#"><li>TIENDA</li></a>
-				<li>PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>	
+				<li>PESOS $<?php //echo $_SESSION['objUsu']->getplata(); ?></li>	
 			</ul>
-		</div> <!-- cierre menu -->	
+		</div> --> <!-- cierre menu -->	
 		<div id="juego">	
 			<div class="row">
 				
@@ -115,7 +127,8 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-					<a href="game.php?accion=eligiendo" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a>
+					<div id="contPlay"><a href="game.php?accion=eligiendo" id="myBtn"><img src="/images/Btn_play.png" id="Btn_play"></a></div>
+					
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
 
@@ -195,14 +208,13 @@
 
 			// Get the button that opens the modal
 			var btn = document.getElementById("myBtn");
-			var btn_play = document.getElementById("Btn_play");
 
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close")[0];
 
 			// When the user clicks the button, open the modal
 			function mostrarPersonajes() {
-				btn_play.style.display = "none";
+				btn.style.display = "none";
 			    modal.style.display = "block";
 			}
 			
@@ -248,6 +260,16 @@
 			      }
 			    }
 			  }
+			}
+
+			// MENU
+			function myFunction() {
+			    var x = document.getElementById("myTopnav");
+			    if (x.className === "topnav") {
+			        x.className += " responsive";
+			    } else {
+			        x.className = "topnav";
+			    }
 			}
 		</script>
 	</body>
