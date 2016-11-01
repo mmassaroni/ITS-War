@@ -1,8 +1,5 @@
 <?php 
 	
-	
-	include_once "usuario.php";
-	
 	class partida{
 
 		private $id;

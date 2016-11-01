@@ -1,7 +1,5 @@
 <?php 
 
-	require('habilidades.php');
-
 	class Personaje{
 
 		private $id;

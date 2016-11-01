@@ -1,6 +1,4 @@
 <?php 
-	require('usuario.php');
-	require('conexion.php');
 
 	class Usuarios{
 
@@ -14,7 +12,7 @@
 				mysqli_close($db);
 				return $usuario;
 			} else {
-				header("Location:sesion.php?&error=1");
+				die(header("Location:sesion.php?error=1"));
 			}
 		}
 

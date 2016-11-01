@@ -1,6 +1,4 @@
 <?php 
-	require('personaje.php');
-	//require('conexion.php');
 
 	class Personajes{
 		private $colPersonajes = array();

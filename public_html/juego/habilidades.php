@@ -1,6 +1,4 @@
-<?php  
-	require('habilidad.php');
-	//require('conexion.php');
+<?php 
 
 	class Habilidades{
 		private $colHabilidades = array();

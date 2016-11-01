@@ -1,6 +1,17 @@
 <?php 
-	require('juego/usuarios.php');
-	require('juego/personajes.php');
+	require_once('juego/conexion.php');
+	require_once('juego/habilidad.php');
+	require_once('juego/habilidades.php');
+	require_once('juego/partida.php');
+	require_once('juego/personaje.php');
+	require_once('juego/personajes.php');
+	require_once('juego/potenciador.php');
+	require_once('juego/potenciador_partida.php');
+	require_once('juego/usu_per_partida.php');
+	require_once('juego/usuario.php');
+	require_once('juego/usuarios.php');
+
+
 
 	function estados($usuario){
 		if ($_GET['accion']==null) {

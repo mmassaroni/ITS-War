@@ -1,6 +1,5 @@
 <?php 
-
-require('juego/usuarios.php');
+require('juego/fachada/fachada.php');
 session_start();
 if ($_GET['log']==1) {
 	$_SESSION['objUsu'] = Usuarios::login($_REQUEST['usu_email'], $_REQUEST['pass']);

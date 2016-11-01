@@ -1,7 +1,4 @@
 <?php 
-     
-     include_once "potenciador.php";
-     include_once "partida.php";
 
     class potenciador_partida{
  

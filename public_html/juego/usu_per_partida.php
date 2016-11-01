@@ -1,10 +1,5 @@
 <?php 
 	
-	
-	include_once "personaje.php";
-	include_once "usuario.php";
-	include_once "partida.php";
-	
 	class usu_per_partida{
 
 		private $numero;
