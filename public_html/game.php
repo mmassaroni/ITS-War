@@ -87,7 +87,7 @@
 	";} ?>	
 </style>
 	</head>
-	<body onunload="desconectar()">
+	<body onbeforeunload="desconectar()">
 		<ul class="topnav" id="myTopnav">
 		  <li class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
 		  <li><a href="game.php?accion=salir">SALIR</a></li>
@@ -184,10 +184,11 @@
 			}
 
 
-
-			function desconectar() {
-				ajax = "game.php?accion=salir";
-			}
+			window.onbeforeunload = function(event) {
+    event.returnValue = $.ajax({
+                url:   'game.php?accion=salir',
+       			});;
+};
 		</script>
 	</body>
 </html>
