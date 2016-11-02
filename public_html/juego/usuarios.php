@@ -18,9 +18,19 @@
 
 		public static function registro($user, $email, $pass){
 			$db = new Conexion();
-			$sql = $db->query("insert into usuario (nombre, pass, email, plata, estado) values ('". $user ."', '". $pass ."', '". $email ."', 30, 'desconectado')") or die(header('Location:sesion.php?error=2'));
+			$sql = $db->query("insert into usuario(nombre, pass, email, plata, estado) values ('". $user ."', '". $pass ."', '". $email ."', 30, 'desconectado')") or die(header('Location:sesion.php?error=2'));
 			$usuario = new Usuario(mysqli_INSERT_ID($db), $user, $email, $pass, 'desconectado', 30);
+
+			$db2 = new Conexion();
+			$registrosPjsPrecio0 = $db2->query("select id from personaje where precio = 0") or die("ERROR CON LA BD");
+			while($registroPer = $registrosPjsPrecio0->fetch_array()){
+				$db3 = new Conexion();
+				$sql3= $db3->query("insert into usu_tiene_per(usuario, personaje) values(". mysqli_INSERT_ID($db) .", ". $registroPer['id'] .")") or die("ERROR CON LA BD");
+				mysqli_close($db3);
+			}
+			
 			mysqli_close($db);
+			mysqli_close($db2);
 			return $usuario;
 		}
 
