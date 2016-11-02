@@ -87,7 +87,7 @@
 	";} ?>	
 </style>
 	</head>
-	<body>
+	<body onunload="desconectar()">
 		<ul class="topnav" id="myTopnav">
 		  <li class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
 		  <li><a href="game.php?accion=salir">SALIR</a></li>
@@ -102,31 +102,7 @@
 			<div class="row">
 				
 				<div id="panel1" class="panel">
-					<div class="j1">
-						<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
-						<div class="row">
-							<div class="img-per"><img src="" title=""></div>
-							<div class="valores-per">
-								<h2>VIDA</h2><img src="">
-								<h2>FUERZA</h2><img src="">
-								<h2>ENERGÍA</h2><img src="">
-								<h2>RESISTENCIA</h2><img src="">
-							</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="j2">
-						<h1><!-- Nombre del jugador --></h1>
-						<div class="row">
-							<div class="img-per"><img src="" title=""></div>
-							<div class="valores-per">
-								<h2>VIDA</h2><img src="" title="">
-								<h2>FUERZA</h2><img src="" title="">
-								<h2>ENERGÍA</h2><img src="" title="">
-								<h2>RESISTENCIA</h2><img src="" title="">
-							</div>
-						</div>
-					</div>
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/mrBean.gif' style='margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}else{require('juego/generador/panel_iz.php');}?>
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
@@ -142,7 +118,6 @@
 						      <h2>Elige un personaje</h2>
 						    </div>
 							<?php 
-								
 								foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
 									echo 
 									"<div class='modal-body'>
@@ -156,31 +131,7 @@
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
-					<div class="j3">
-						<h1><!-- Nombre del jugador --></h1>
-						<div class="row">
-							<div class="img-per"><img src="" title=""></div>
-							<div class="valores-per">
-								<h2>VIDA</h2><img src="">
-								<h2>FUERZA</h2><img src="">
-								<h2>ENERGÍA</h2><img src="">
-								<h2>RESISTENCIA</h2><img src="">
-							</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="j4">
-						<h1><!-- Nombre del jugador --></h1>
-						<div class="row">
-							<div class="img-per"><img src="" title=""></div>
-							<div class="valores-per">
-								<h2>VIDA</h2><img src="" title="">
-								<h2>FUERZA</h2><img src="" title="">
-								<h2>ENERGÍA</h2><img src="" title="">
-								<h2>RESISTENCIA</h2><img src="" title="">
-							</div>
-						</div>
-					</div>
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/baila2.gif' style='margin-top: 34%'><img src='/images/loading.gif' style='width: 105px; margin-top: 27px;'>";}else{require('juego/generador/panel_d.php');}?>
 				</div><!--cierre panel2-->
 
 			</div>
@@ -230,6 +181,12 @@
 			    } else {
 			        x.className = "topnav";
 			    }
+			}
+
+
+
+			function desconectar() {
+				ajax = "game.php?accion=salir";
 			}
 		</script>
 	</body>
