@@ -1,5 +1,5 @@
 <div class="j1">
-	<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
+	<h1> <?php echo $_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getnombre(); ?></h1>
 	<div class="row vertical">
 		<div class="img-per"><img src="/images/mrBean.gif" title="Nombre del Personaje"></div>
 		<div class="valores-per">
