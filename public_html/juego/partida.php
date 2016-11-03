@@ -1,17 +1,15 @@
 <?php 
 	
-	class partida{
+	class Partida{
 
 		private $id;
-		private $ganador;
 		private $estado;
+		private $colJugadores = array();
 
-
-
-		public function __construct($id, $ganador, $estado){
+		public function __construct($id, $estado, $colJugadores){
 			$this->id=$id;
-			$this->ganador=$ganador;
 			$this->estado=$estado;
+			$this->colJugadores=$colJugadores;
 		}
 
 		// ####################################                   abre get y set
@@ -24,22 +22,6 @@
 			$this->id=$id;
 		}
 
-		public function getturno(){
-			return $this->turno;
-		}
-
-		public function setturno($turno){
-			$this->turno=$turno;
-		}
-
-		public function getnumero(){
-			return $this->numero;
-		}
-
-		public function setnumero($numero){
-			$this->numero=$numero;
-		}
-
 		public function getestado(){
 			return $this->estado;
 		}
@@ -48,6 +30,13 @@
 			$this->estado=$estado;
 		}
 
+		public function getcolJugadores(){
+			return $this->estado;
+		}
+
+		public function setcolJugadores($colJugadores){
+			$this->colJugadores=$colJugadores;
+		}		
 
 		// ####################################              cierre de get y set
 

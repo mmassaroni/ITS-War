@@ -1,33 +1,44 @@
 <?php 
 	
-	class usu_per_partida{
-
-		private $numero;
-		private $ubicaciony;
-		private $ubicacionx;
-		private $personaje;
-		private $usuario;
+	class Usu_Per_Partida{
 		private $partida;
-		private $vida;
+		private $numero;
+		private $usuario;
+		private $personaje;
 		private $fuerza;
-		private $energia;
 		private $resistencia;
+		private $vida;
+		private $energia;
+		private $ubicacionx;
+		private $ubicaciony;
+		private $turno;
+		private $ganador;
 
 
-		public function __construct($numero, $partida, $usuario, $personaje, $ubicaciony, $ubicacionx, $vida, $fuerza, $energia, $resistencia){
-			$this->numero=$numero;
-			$this->ubicaciony=$ubicaciony;
-			$this->ubicacionx=$ubicacionx;
-			$this->vida=$vida;
-			$this->fuerza=$fuerza;
-			$this->energia=$energia;
-			$this->resistencia=$resistencia;
+		public function __construct($partida, $numero, $usuario, $personaje, $fuerza, $resistencia, $vida, $energia, $ubicacionx = null, $ubicaciony = null, $turno = null, $ganador = null){
 			$this->partida=$partida;
-			$this->personaje=$personaje;
+			$this->numero=$numero;
 			$this->usuario=$usuario;
+			$this->personaje=$personaje;
+			$this->fuerza=$fuerza;
+			$this->resistencia=$resistencia;
+			$this->vida=$vida;
+			$this->energia=$energia;
+			$this->ubicacionx=$ubicacionx;
+			$this->ubicaciony=$ubicaciony;
+			$this->turno=$turno;
+			$this->ganador=$ganador;
 		}
 
 		// ####################################                   abre get y set
+
+		public function getpartida(){
+			return $this->partida;
+		}
+
+		public function setpartida($partida){
+			$this->partida=$partida;
+		}
 
 		public function getnumero(){
 			return $this->numero;
@@ -37,12 +48,52 @@
 			$this->numero=$numero;
 		}
 
-		public function getubicaciony(){
-			return $this->ubicaciony;
+		public function getusuario(){
+			return $this->usuario;
 		}
 
-		public function setubicaciony($ubicaciony){
-			$this->ubicaciony=$ubicaciony;
+		public function setusuario($usuario){
+			$this->usuario=$usuario;
+		}
+
+		public function getpersonaje(){
+			return $this->personaje;
+		}
+
+		public function setpersonaje($personaje){
+			$this->personaje=$personaje;
+		}
+
+		public function getfuerza(){
+			return $this->fuerza;
+		}
+
+		public function setfuerza($fuerza){
+			$this->fuerza=$fuerza;
+		}
+		
+		public function getresistencia(){
+			return $this->resistencia;
+		}
+
+		public function setresistencia($resistencia){
+			$this->resistencia=$resistencia;
+		}
+		
+		public function getvida(){
+			return $this->vida;
+		}
+
+		public function setvida($vida){
+			$this->vida=$vida;
+		}
+			
+		public function getenergia(){
+			return $this->energia;
+		}
+
+		public function setenergia($energia){
+			$this->energia=$energia;
 		}
 
 		public function getubicacionx(){
@@ -53,39 +104,29 @@
 			$this->ubicacionx=$ubicacionx;
 		}
 		
-		
-		public function getvida(){
-			return $this->vida;
+		public function getubicaciony(){
+			return $this->ubicaciony;
 		}
 
-		public function setvida($vida){
-			$this->vida=$vida;
+		public function setubicaciony($ubicaciony){
+			$this->ubicaciony=$ubicaciony;
 		}
 
-		public function getfuerza(){
-			return $this->fuerza;
+		public function getturno(){
+			return $this->turno;
 		}
 
-		public function setfuerza($fuerza){
-			$this->fuerza=$fuerza;
-		}
-		public function getenergia(){
-			return $this->energia;
+		public function setturno($turno){
+			$this->turno=$turno;
 		}
 
-		public function setenergia($energia){
-			$this->energia=$energia;
-		}
-		
-		
-		public function getresistencia(){
-			return $this->resistencia;
+		public function getganador(){
+			return $this->ganador;
 		}
 
-		public function setresistencia($resistencia){
-			$this->resistencia=$resistencia;
+		public function setganador($ganador){
+			$this->ganador=$ganador;
 		}
-
 
 		// ####################################              cierre de get y set
 
