@@ -230,3 +230,8 @@
 		</script>
 	</body>
 </html>
+<?php  
+if($_GET['accion']=="esperando") {
+	esperando();
+}
+?>

@@ -28,6 +28,8 @@
 			Usuarios::actualizar($usuario);
 			$pjElegido = datosPjElegido($usuario);
 			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $pjElegido);
+			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
+
 		}
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");
@@ -49,6 +51,31 @@
 			}
 		}
 		return $personajeParaRetornar;
+	}
+
+	function esperando(){
+		sleep(5);
+		//actualizo el objeto partida
+		//si somos 4
+			//si soy el creador update partida en la base de datos para que este en curso y seguir = false
+			//si soy un participante seguir = false
+			//header('Location:game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje']);
+		//si no somos 4
+			header('Location:game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje']);
+		
+
+		/*if(){
+			$total = "";
+			for ($segundos = 1; $segundos <= 5; $segundos++){
+				echo "<p>".$segundos."</p>";
+				//Para cada iteración 1 segundo
+				sleep($segundos);
+				$total = $segundos;
+			}
+			echo "Tiempo completado: $total segundos";
+		}else{
+			header('Location:');
+		}*/
 	}
 
 ?>
