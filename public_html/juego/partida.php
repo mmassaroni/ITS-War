@@ -31,7 +31,7 @@
 		}
 
 		public function getcolJugadores(){
-			return $this->estado;
+			return $this->colJugadores;
 		}
 
 		public function setcolJugadores($colJugadores){

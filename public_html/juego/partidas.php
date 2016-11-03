@@ -43,6 +43,8 @@
 					$db2 = new Conexion();
 					$db2->query("insert into usu_pj_partida(partida, numero, usuario, personaje, fuerza, resistencia, vida, energia) values(".$regPartida['id'].", ".$i.", ".$usuario->getid().", ".$pjElegido->getid().", ".$pjElegido->getfuerza().", ".$pjElegido->getresistencia().", ".$pjElegido->getvida().", ".$pjElegido->getenergia().")") or die("ERROR CON LA BD5");
 					mysqli_close($db2);
+					$jugador = new Usu_Per_Partida($regPartida['id'], $i, $usuario->getid(), $pjElegido->getid(), $pjElegido->getfuerza(), $pjElegido->getresistencia(), $pjElegido->getvida(), $pjElegido->getenergia());
+					$jugadores->agregarJugador($i, $jugador);
 					$i = 5;
 				}
 			}

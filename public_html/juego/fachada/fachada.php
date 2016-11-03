@@ -53,6 +53,7 @@
 		return $personajeParaRetornar;
 	}
 
+<<<<<<< HEAD
 	function esperando(){
 		sleep(5);
 		//actualizo el objeto partida
@@ -76,6 +77,14 @@
 		}else{
 			header('Location:');
 		}*/
+=======
+	function nombreJugador($id){
+		$db = new Conexion();
+		$reg = $db->query("select nombre from usuario where id = " . $id);
+		$nombre = $reg->fetch_array();
+		mysqli_close($db);
+		return $nombre['nombre'];
+>>>>>>> origin/master
 	}
 
 ?>
