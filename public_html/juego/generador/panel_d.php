@@ -1,5 +1,13 @@
 <div class="j3">
-	<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
+	<h1<?php 
+		if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[3]->getusuario() == $_SESSION['objUsu']->getid()) {
+			echo " style='background-color:#3B8686'>";
+		} else {
+			echo ">";
+		}
+		echo nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[3]->getusuario());
+		?>
+		</h1>
 	<div class="row vertical">
 		<div class="img-per"><img src="/images/mrBean.gif" title="Nombre del Personaje"></div>
 		<div class="valores-per">
@@ -22,7 +30,15 @@
 </div>
 <hr/>
 <div class="j4">
-	<h1><?php echo $_SESSION['objUsu']->getnombre(); ?></h1>
+	<h1<?php 
+		if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[4]->getusuario() == $_SESSION['objUsu']->getid()) {
+			echo " style='background-color:#3B8686'>";
+		} else {
+			echo ">";
+		}
+		echo nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[4]->getusuario());
+		?>
+		</h1>
 	<div class="row vertical">
 		<div class="img-per"><img src="/images/mrBean.gif" title="Nombre del Personaje"></div>
 		<div class="valores-per">

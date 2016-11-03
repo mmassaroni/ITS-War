@@ -51,4 +51,12 @@
 		return $personajeParaRetornar;
 	}
 
+	function nombreJugador($id){
+		$db = new Conexion();
+		$reg = $db->query("select nombre from usuario where id = " . $id);
+		$nombre = $reg->fetch_array();
+		mysqli_close($db);
+		return $nombre['nombre'];
+	}
+
 ?>
