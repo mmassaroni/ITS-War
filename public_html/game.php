@@ -139,9 +139,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-					
-					
-					
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require('juego/generador/panel_3.php');}?>					
 				</div><!-- cierre panel3 -->
 
 			</div>
@@ -189,6 +187,46 @@
 //                 url:   'game.php?accion=salir',
 //        			});;
 // };
+
+
+// #######################################################
+// #                                                     #
+// #  FUNCIONES PARA CONTROLAR BARRAS DE VIDA Y ENERGIA  #
+// #                                                     #
+// #######################################################
+
+
+			function vida() {
+			  var elem = document.getElementById("vida");
+			  var width = 100; // porcentage actual sin el "%"
+			  var id = setInterval(frame, 30);
+			  function frame() {        // ⬇ este es el valor nuevo
+			    if (width <= 0 || width == 0) {
+			      clearInterval(id);
+			      document.getElementById("label_vida").innerHTML = "";
+			    } else {
+			      width--;
+			      elem.style.width = width + "%";
+			      document.getElementById("label_vida").innerHTML = width;
+			    }
+			  }
+			}
+
+			function energia() {
+			  var elem = document.getElementById("energia");
+			  var width = 100; // porcentage actual sin el "%"
+			  var id = setInterval(frame, 30);
+			  function frame() {        // ⬇ este es el valor nuevo
+			    if (width <= 0 || width == 0) {
+			      clearInterval(id);
+			      document.getElementById("label_energia").innerHTML = "";
+			    } else {
+			      width--;
+			      elem.style.width = width + "%";
+			      document.getElementById("label_energia").innerHTML = width;
+			    }
+			  }
+			}
 		</script>
 	</body>
 </html>
