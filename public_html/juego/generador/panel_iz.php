@@ -1,11 +1,14 @@
 <div class="j1">
 	<h1<?php 
-		if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
-			echo " style='background-color:#3B8686'>";
+		if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
+			$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
+			if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
+				echo " style='background-color:#3B8686'";
+			}
 		} else {
-			echo ">";
+			$nombreJugador = "jugador1";
 		}
-		echo nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
+		echo ">" . $nombreJugador;
 		?>
 		</h1>
 	<div class="row vertical">
@@ -31,12 +34,15 @@
 <hr/>
 <div class="j2">
 	<h1<?php 
-		if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario() == $_SESSION['objUsu']->getid()) {
-			echo " style='background-color:#3B8686'>";
+		if (array_key_exists(2, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
+			$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario());
+			if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario() == $_SESSION['objUsu']->getid()) {
+				echo " style='background-color:#3B8686'";
+			}
 		} else {
-			echo ">";
+			$nombreJugador = "jugador2";
 		}
-		echo nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario());
+		echo ">" . $nombreJugador;
 		?>
 		</h1>
 	<div class="row vertical">
