@@ -14,7 +14,6 @@
 	require_once('juego/usuarios.php');
 
 
-
 	function estados($usuario){
 		if ($_GET['accion']==null) {
 			$usuario->setestado("conectado");
@@ -28,7 +27,7 @@
 			Usuarios::actualizar($usuario);
 			$pjElegido = datosPjElegido($usuario);
 			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $pjElegido);
-			// header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
+			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
 
 		}
 		elseif ($_GET['accion']=="jugando") {
@@ -53,7 +52,7 @@
 		return $personajeParaRetornar;
 	}
 
-	function esperando(){
+	/*function esperando(){
 		sleep(5);
 		//actualizo el objeto partida
 		//si somos 4

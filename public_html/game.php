@@ -241,7 +241,7 @@
 		setInterval(turno ,5000);									// repite la funcion "turno()" cada 5s
 		function turno(){
 			$.ajax({
-                url:   "/juego/fachada/fachada.php?caca=1",         // ejecuta la fachada con un valor de $_GET a definir para ejecutar una funcion
+                url:   "juego/fachada/esperando.php",         // ejecuta la fachada con un valor de $_GET a definir para ejecutar una funcion
         	});
         	$("#panel1").load("juego/generador/panel_iz.php");		// "recarga" el panel de la iz
         	$("#panel2").load("juego/generador/panel_d.php");		// "recarga" el panel de la de
