@@ -53,8 +53,7 @@
 		return $personajeParaRetornar;
 	}
 
-	/*function esperando(){
-		//creador
+	function esperando(){
 		sleep(5);
 		//actualizo el objeto partida
 		//si somos 4
