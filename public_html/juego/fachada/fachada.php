@@ -28,7 +28,7 @@
 			Usuarios::actualizar($usuario);
 			$pjElegido = datosPjElegido($usuario);
 			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $pjElegido);
-			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
+			// header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
 
 		}
 		elseif ($_GET['accion']=="jugando") {
@@ -53,8 +53,8 @@
 		return $personajeParaRetornar;
 	}
 
-<<<<<<< HEAD
-	function esperando(){
+	/*function esperando(){
+		//creador
 		sleep(5);
 		//actualizo el objeto partida
 		//si somos 4
@@ -62,10 +62,10 @@
 			//si soy un participante seguir = false
 			//header('Location:game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje']);
 		//si no somos 4
-			header('Location:game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje']);
+			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
 		
 
-		/*if(){
+		if(){
 			$total = "";
 			for ($segundos = 1; $segundos <= 5; $segundos++){
 				echo "<p>".$segundos."</p>";
@@ -76,15 +76,14 @@
 			echo "Tiempo completado: $total segundos";
 		}else{
 			header('Location:');
-		}*/
-=======
+		
+	}*/
 	function nombreJugador($id){
 		$db = new Conexion();
 		$reg = $db->query("select nombre from usuario where id = " . $id);
 		$nombre = $reg->fetch_array();
 		mysqli_close($db);
 		return $nombre['nombre'];
->>>>>>> origin/master
 	}
 
 ?>

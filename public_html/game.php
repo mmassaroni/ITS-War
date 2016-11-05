@@ -159,7 +159,7 @@
 			    modal.style.display = "block";
 			}
 
-			<?php if ($_GET['accion'] == "endo") {echo "mostrarPersonajes();";} ?>
+			<?php if ($_GET['accion'] == "eligiendo") {echo "mostrarPersonajes();";} ?>
 
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() {
@@ -230,8 +230,3 @@
 		</script>
 	</body>
 </html>
-<?php  
-if($_GET['accion']=="esperando") {
-	esperando();
-}
-?>
