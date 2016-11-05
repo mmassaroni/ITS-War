@@ -1,14 +1,16 @@
 <div class="j1">
-	<h1<?php require('juego/usuario.php');echo ">alo ".$_SESSION['objUsu']->getnombre()."</h1>";
-		if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
-			$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
-			if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
-				echo " style='background-color:#3B8686'";
-			}
-		} else {
-			$nombreJugador = "jugador1";
-		}
-		echo ">" . $nombreJugador;
+	<h1<?php $resultado = $_POST['valor1']; 
+echo $resultado;
+		
+		// if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
+		// 	$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
+		// 	if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
+		// 		echo " style='background-color:#3B8686'";
+		// 	}
+		// } else {
+		// 	$nombreJugador = "jugador1";
+		// }
+		// echo ">" . $nombreJugador;
 		?>
 		</h1>
 	<div class="row vertical">

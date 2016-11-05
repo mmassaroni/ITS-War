@@ -13,7 +13,6 @@
 	require_once('juego/usuario.php');
 	require_once('juego/usuarios.php');
 
-
 	function estados($usuario){
 		if ($_GET['accion']==null) {
 			$usuario->setestado("conectado");
@@ -28,7 +27,6 @@
 			$pjElegido = datosPjElegido($usuario);
 			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $pjElegido);
 			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
-
 		}
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");

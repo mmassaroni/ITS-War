@@ -72,6 +72,52 @@
 			        //alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
 			    });
 			});
+
+
+
+			<?php 
+					if ($_GET['accion'] == "esperando") { 
+						$estilo = "";
+						if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
+							$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
+							if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
+								$estilo = " style='background-color:#3B8686'";
+							}
+						} else {
+							$nombreJugador = "jugador1";
+						}
+						$j1nombre = $estilo . ">" . $nombreJugador;	
+
+						echo '
+					// ##############################
+					// #                            #
+					// #  ESPERANDO - TIMER - AJAX  #
+					// #                            #
+					// ##############################
+
+							var j1nombre = "'.$j1nombre.'";
+
+							setInterval(turno(j1nombre) ,5000);									
+							function turno(j1nombre){
+								var parametros = {
+						                j1nombre : valor1,
+						                "valorCaja2" : valorCaja2
+						        };
+								$.ajax({
+									data: parametros,
+									context: this,
+					        		type: "post",
+					                url: "juego/fachada/esperando.php",         
+					        	}, success: function () { $("#panel1").load("juego/generador/panel_iz.php"); }
+					        	});
+					        	
+					        	//$("#panel2").load("juego/generador/panel_d.php");		// "recarga" el panel de la de
+
+							}
+					';}?>
+
+
+
 </script>	
 <style>	
 	<?php if ($_GET['tab'] == 1 ) {echo "
@@ -89,7 +135,7 @@
 	</head>
 	<body><!-- onbeforeunload="desconectar()" -->
 		<ul class="topnav" id="myTopnav">
-		  <li class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
+		  <li id="caca" class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
 		  <li><a href="game.php?accion=salir">SALIR</a></li>
 		  <li><a href="#tienda">TIENDA</a></li>
 		  <li class="ex">PESOS $<?php echo $_SESSION['objUsu']->getplata(); ?></li>
@@ -100,9 +146,8 @@
 
 		<div id="juego">	
 			<div class="row">
-				
 				<div id="panel1" class="panel">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/mrBean.gif' style='margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}else{require('juego/generador/panel_iz.php');}?>
+					<?php if ($_GET['accion'] == "esperando"){require('juego/generador/panel_iz.php');}else{echo "<img src='/images/mrBean.gif' style='margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}?>
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
@@ -131,7 +176,7 @@
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/baila2.gif' style='margin-top: 34%'><img src='/images/loading.gif' style='width: 105px; margin-top: 27px;'>";}else{require('juego/generador/panel_d.php');}?>
+					<?php if ($_GET['accion'] == "esperando") {require('juego/generador/panel_d.php');}else{echo "<img src='/images/baila2.gif' style='margin-top: 34%'><img src='/images/loading.gif' style='width: 105px; margin-top: 27px;'>";}?>
 				</div><!--cierre panel2-->
 
 			</div>
@@ -230,23 +275,7 @@
 
 
 
-<?php if ($_GET['accion'] == "esperando") { echo '
-// ##############################
-// #                            #
-// #  ESPERANDO - TIMER - AJAX  #
-// #                            #
-// ##############################
 
-		
-		setInterval(turno ,5000);									// repite la funcion "turno()" cada 5s
-		function turno(){
-			$.ajax({
-                url:   "juego/fachada/esperando.php",         // ejecuta la fachada con un valor de $_GET a definir para ejecutar una funcion
-        	});
-        	$("#panel1").load("juego/generador/panel_iz.php");		// "recarga" el panel de la iz
-        	$("#panel2").load("juego/generador/panel_d.php");		// "recarga" el panel de la de
-		}
-';}?>
 		</script>
 	</body>
 </html>

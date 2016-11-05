@@ -1,7 +1,3 @@
 <?php
-
-
-
- $_SESSION['objUsu']->setnombre("caca") 
-
+	$_SESSION['objUsu']->setnombre("caca");
  ?>
