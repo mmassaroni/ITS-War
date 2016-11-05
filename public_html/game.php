@@ -97,23 +97,27 @@
 
 							var j1nombre = "'.$j1nombre.'";
 
-							setInterval(turno(j1nombre) ,5000);									
-							function turno(j1nombre){
-								var parametros = {
-						                j1nombre : valor1,
-						                "valorCaja2" : valorCaja2
-						        };
+							setInterval(function turno(){
 								$.ajax({
-									data: parametros,
-									context: this,
+									data: "j1nombre="+j1nombre,
 					        		type: "post",
 					                url: "juego/fachada/esperando.php",         
-					        	}, success: function () { $("#panel1").load("juego/generador/panel_iz.php"); }
+					        	success: function (respuesta) { 
+
+					        		document.getElementById("caca").innerHTML = respuesta+" casi";
+
+					        	}
 					        	});
 					        	
+					        	//$("#panel1").load("juego/generador/panel_iz.php"); 
 					        	//$("#panel2").load("juego/generador/panel_d.php");		// "recarga" el panel de la de
 
-							}
+							}, 5000);	
+
+							
+
+
+							
 					';}?>
 
 

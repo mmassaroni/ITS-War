@@ -1,3 +1,4 @@
 <?php
-	$_SESSION['objUsu']->setnombre("caca");
+	$pepe = $_POST['j1nombre'];
+	echo json_encode($pepe);
  ?>

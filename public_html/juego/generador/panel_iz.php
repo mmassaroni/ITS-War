@@ -1,6 +1,5 @@
 <div class="j1">
-	<h1<?php $resultado = $_POST['valor1']; 
-echo $resultado;
+	<h1><?php echo $j1nombre;
 		
 		// if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
 		// 	$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
