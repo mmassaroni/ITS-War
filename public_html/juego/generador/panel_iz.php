@@ -1,68 +1,64 @@
+<?php 
+	require('../conexion.php');
+	$db = new Conexion();
+	$registros = $db->query("select upp.numero, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_GET['partida']." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 1 or upp.numero = 2) and (p.estado = 'creando' or p.estado = 'jugando')") or die("ERROR CON LA BD");
+	while ($reg = $registros->fetch_array()) {
+		if ($reg['numero'] == 1){
+			$datosJ1 = $reg;
+		}elseif ($reg['numero'] == 2) {
+			$datosJ2 = $reg;
+		}
+	}
+	mysqli_close($db);
+?>
 <div class="j1">
-	<h1><?php echo $j1nombre;
-		
-		// if (array_key_exists(1, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
-		// 	$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario());
-		// 	if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $_SESSION['objUsu']->getid()) {
-		// 		echo " style='background-color:#3B8686'";
-		// 	}
-		// } else {
-		// 	$nombreJugador = "jugador1";
-		// }
-		// echo ">" . $nombreJugador;
+	<h1><?php
+			if (empty($datosJ1['nombreJugador'])){ echo "JUGADOR1";} else{ echo $datosJ1['nombreJugador'];} 
 		?>
-		</h1>
+	</h1>
 	<div class="row vertical">
-		<div class="img-per"><img src="/images/mrBean.gif" title="Nombre del Personaje"></div>
+		<div class="img-per"><img <?php if (empty($datosJ1['imgCuerpo'])){ echo "src='../../images/mrBean.gif'"; } else{echo "src='" . $datosJ1['imgCuerpo'] . "'";} echo "title='".$datosJ1['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
 					<div id="myBar_vida">
-						<div id="label_vida">100</div>
+						<div id="label_vida"><?php echo $datosJ1['vida']; ?></div>
 					</div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
 					<div id="myBar_energia"></div>
-					<div id="label_energia">100</div>
+					<div id="label_energia"><?php echo $datosJ1['energia']; ?></div>
 				</div> 
-			<h2>FUERZA<span> 5</span></h2>
+			<h2>FUERZA<span> <?php echo $datosJ1['fuerza']; ?></span></h2>
 			<hr>
-			<h2>RESISTENCIA<span> 3</span></h2>
+			<h2>RESISTENCIA<span> <?php echo $datosJ1['resistencia']; ?></span></h2>
 		</div>
 	</div>
 </div>
 <hr/>
 <div class="j2">
-	<h1<?php 
-		if (array_key_exists(2, $_SESSION['partida']->getcolJugadores()->getususPersPartida())) {
-			$nombreJugador = nombreJugador($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario());
-			if ($_SESSION['partida']->getcolJugadores()->getususPersPartida()[2]->getusuario() == $_SESSION['objUsu']->getid()) {
-				echo " style='background-color:#3B8686'";
-			}
-		} else {
-			$nombreJugador = "jugador2";
-		}
-		echo ">" . $nombreJugador;
+	<h1><?php
+			if (empty($datosJ2['nombreJugador'])){ echo "JUGADOR2";} else{ echo $datosJ2['nombreJugador'];} 
 		?>
-		</h1>
+	</h1>
 	<div class="row vertical">
-		<div class="img-per"><img src="/images/mrBean.gif" title="Nombre del Personaje"></div>
+		<div class="img-per"><img <?php if (empty($datosJ2['imgCuerpo'])){ echo "src='../../images/mrBean.gif'"; } else{echo "src='" . $datosJ2['imgCuerpo'] . "'";} echo "title='".$datosJ2['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
 					<div id="myBar_vida">
-						<div id="label_vida">100</div>
+						<div id="label_vida"><?php echo $datosJ2['vida']; ?></div>
 					</div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
 					<div id="myBar_energia"></div>
-					<div id="label_energia">100</div>
+					<div id="label_energia"><?php echo $datosJ2['energia']; ?></div>
 				</div> 
-			<h2>FUERZA<span> 5</span></h2>
+			<h2>FUERZA<span> <?php echo $datosJ2['fuerza']; ?></span></h2>
 			<hr>
-			<h2>RESISTENCIA<span> 3</span></h2>
+			<h2>RESISTENCIA<span> <?php echo $datosJ2['resistencia']; ?></span></h2>
 		</div>
 	</div>
 </div>
