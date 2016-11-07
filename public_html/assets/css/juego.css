@@ -283,6 +283,14 @@ ul.topnav li.ex, a, button {
     box-shadow: 0 1px 185px 0 rgba(255, 255, 255, 0.2), 0 -3px 185px 0 rgba(255, 255, 255, 0.19);
 }
 
+.movimientos {
+   height: 50%;
+}
+
+.ataques {
+   height: 50%;
+}
+
 
 /* ################################ */
 /* # MODAL - PERSONAJES pa elegir # */

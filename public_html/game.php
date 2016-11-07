@@ -151,7 +151,7 @@
 									echo 
 									"<div class='modal-body'>
 										<h3>". $personaje->getnombre() ."</h3>
-										<a href='game.php?&accion=buscando&tab=1&personaje=". $personaje->getid() ."'>Elegir este</a>
+										<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
 									</div>";
 								}
 							?>
@@ -168,7 +168,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require('juego/generador/panel_3.php');}?>					
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require('juego/generador/panel_3.php');}?>
 				</div><!-- cierre panel3 -->
 
 			</div>
