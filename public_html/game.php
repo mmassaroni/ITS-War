@@ -1,5 +1,5 @@
 <?php 
-	require('juego/fachada/fachada.php');
+	require_once('juego/fachada/fachada.php');
 	session_start();
 	$_SESSION['personajes'] = Personajes::instanciar_Personajes_Habilidades();
 	$_SESSION['objUsu']->setpersonajes(Personajes::personajesDelUsuario($_SESSION['objUsu'], $_SESSION['personajes']));
@@ -96,13 +96,10 @@
 
 				if ($_GET['accion'] == "jugando") { 
 					
-					echo "function cargarPanelesPrimeraVezJugando(){
-							var getPartida = ".$_GET['partida'].";
-							var getJugador = ".$_GET['jugador'].";
-							var getAccion = ".$_GET['accion'].";
-				        	$('#panel1').load('juego/generador/panel_iz.php?partida='+getPartida); 
-				        	$('#panel2').load('juego/generador/panel_d.php?&partida='+getPartida+'&jugador='+getJugador+'&estado='+getAccion);
-						}";
+					echo 'function cargarPanelesPrimeraVezJugando(){
+							$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'");
+						}';
 				}
 			?>
 		</script>	
