@@ -78,8 +78,7 @@
 				$db3->query("update partida set estado = 'en curso' where id = ".$_GET['partida']) or die("ERROR EN LA BD3");
 				mysqli_close($db3);
 			}
-			//header('Location:../../game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje'].'&partida='.$_GET['partida'].'&jugador='.$_GET['jugador']);
-			echo "<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'>clearInterval(intervalo);</script>";
+			echo "<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'>window.open('../../game.php?&accion=jugando&tab=1&personaje=".$_GET['personaje']."&partida=".$_GET['partida']."&jugador=".$_GET['jugador']."', '_self');</script>";
 			//../../game.php?&accion=jugando&tab=1&personaje=".$_GET['personaje']."&partida=".$_GET['partida']."&jugador=".$_GET['jugador']."
 		}	
 	}
