@@ -74,12 +74,11 @@
 			<?php
 
 				if ($_GET['accion'] == "esperando") { 
-				
-					echo "function cargarPanelesPrimeraVez(){
-							var get = ".$_GET['partida'].";
-				        	$('#panel1').load('juego/generador/panel_iz.php?partida='+get); 
-				        	$('#panel2').load('juego/generador/panel_d.php?partida='+get);
-						}";
+					
+					echo 'function cargarPanelesPrimeraVez(){
+							$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'"); 		        	
+						}';
 
 					echo '
 						// ##############################
@@ -88,13 +87,23 @@
 						// #                            #
 						// ##############################
 
-						setInterval(function loadpaneles(){
+						var intervalo = setInterval(
+							function loadpaneles(){
 				        	$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
-				        	$("#panel2").load("juego/generador/panel_d.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'");
+						}, 5000);';
+				}
 
-						}, 5000);	
-		
-				';}
+				if ($_GET['accion'] == "jugando") { 
+					
+					echo "function cargarPanelesPrimeraVezJugando(){
+							var getPartida = ".$_GET['partida'].";
+							var getJugador = ".$_GET['jugador'].";
+							var getAccion = ".$_GET['accion'].";
+				        	$('#panel1').load('juego/generador/panel_iz.php?partida='+getPartida); 
+				        	$('#panel2').load('juego/generador/panel_d.php?&partida='+getPartida+'&jugador='+getJugador+'&estado='+getAccion);
+						}";
+				}
 			?>
 		</script>	
 		<style>	
@@ -111,7 +120,7 @@
 			";} ?>	
 		</style>
 	</head>
-	<body <?php if ($_GET['accion'] == "esperando") { echo 'onload="cargarPanelesPrimeraVez()"'; } ?> ><!-- onbeforeunload="desconectar()" -->
+	<body <?php if ($_GET['accion'] == "esperando") { echo 'onload="cargarPanelesPrimeraVez()"'; }elseif ($_GET['accion'] == "jugando") { echo 'onload="cargarPanelesPrimeraVezJugando()"'; } ?> ><!-- onbeforeunload="desconectar()" -->
 		<ul class="topnav" id="myTopnav">
 		  <li id="caca" class="usuario ex"><?php echo $_SESSION['objUsu']->getnombre(); ?></li>
 		  <li><a href="game.php?accion=salir">SALIR</a></li>
