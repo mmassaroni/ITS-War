@@ -76,8 +76,8 @@
 				if ($_GET['accion'] == "esperando") { 
 					
 					echo 'function cargarPanelesPrimeraVez(){
-							$("#panel1").load("juego/generador/panel_iz.php"); 
-				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'"); 		        	
+							$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'"); 		        	
 						}';
 
 					echo '
@@ -89,16 +89,16 @@
 
 						var intervalo = setInterval(
 							function loadpaneles(){
-				        	$("#panel1").load("juego/generador/panel_iz.php"); 
-				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
+				        	$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'");
 						}, 5000);';
 				}
 
 				if ($_GET['accion'] == "jugando") { 
 					
 					echo 'function cargarPanelesPrimeraVezJugando(){
-							$("#panel1").load("juego/generador/panel_iz.php"); 
-				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
+							$("#panel1").load("juego/generador/panel_iz.php?partida='.$_GET['partida'].'"); 
+				        	$("#panel2").load("juego/generador/panel_d.php?&partida='.$_GET['partida'].'&jugador='.$_GET['jugador'].'&accion='.$_GET['accion'].'&personaje='.$_GET['personaje'].'");
 						}';
 				}
 			?>

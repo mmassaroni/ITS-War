@@ -1,20 +1,7 @@
 <?php 
-	require_once('../conexion.php');
-	require_once('../habilidad.php');
-	require_once('../habilidades.php');
-	require_once('../partida.php');
-	require_once('../partidas.php');
-	require_once('../personaje.php');
-	require_once('../personajes.php');
-	require_once('../potenciador.php');
-	require_once('../potenciador_partida.php');
-	require_once('../usu_per_partida.php');
-	require_once('../usus_pers_partida.php');
-	require_once('../usuario.php');
-	require_once('../usuarios.php');
-	session_start();
+	require('../conexion.php');
 	$db = new Conexion();
-	$registros = $db->query("select upp.numero, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
+	$registros = $db->query("select upp.numero, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_GET['partida']." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
 	while ($reg = $registros->fetch_array()) {
 		if ($reg['numero'] == 3){
 			$datosJ3 = $reg;
@@ -78,17 +65,17 @@
 <?php  
 	if ($_GET['accion'] == 'esperando') {
 		$db = new Conexion();
-		$registros = $db->query("select count(*) as cantidadReg from usu_pj_partida where partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD1");
+		$registros = $db->query("select count(*) as cantidadReg from usu_pj_partida where partida = ".$_GET['partida']) or die("ERROR CON LA BD1");
 		$reg = $registros->fetch_array();
 		mysqli_close($db);
 		if ($reg['cantidadReg'] == 4) {
 			$db2 = new Conexion();
-			$consulta = $db2->query("select numero from usu_pj_partida where partida = ".$_SESSION['partida']->getid()." and usuario =".$_SESSION['objUsu']->getid()." order by numero") or die("ERROR CON LA BD2");
+			$consulta = $db2->query("select numero from usu_pj_partida where partida = ".$_GET['partida']." and usuario =".$_GET['jugador']." order by numero") or die("ERROR CON LA BD2");
 			$numeroJugador = $consulta->fetch_array();
 			mysqli_close($db2);
 			//if ($numeroJugador['numero'] == 1) {
 				$db3 = new Conexion();
-				$db3->query("update partida set estado = 'en curso' where id = ".$_SESSION['partida']->getid()) or die("ERROR EN LA BD3");
+				$db3->query("update partida set estado = 'en curso' where id = ".$_GET['partida']) or die("ERROR EN LA BD3");
 				mysqli_close($db3);
 			//}
 			echo "<script>window.open('../../game.php?&accion=jugando&tab=1', '_self');</script>";

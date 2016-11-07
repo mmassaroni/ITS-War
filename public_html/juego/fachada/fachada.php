@@ -24,9 +24,9 @@
 		elseif ($_GET['accion']=="buscando") {
 			$usuario->setestado("buscando");
 			Usuarios::actualizar($usuario);
-			$pjElegido = datosPjElegido($usuario);
-			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $pjElegido);
-			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje'].'&partida='.$_SESSION['partida']->getid().'&jugador='.$_SESSION['objUsu']->getid());
+			$_SESSION['pjElegido'] = datosPjElegido($usuario);
+			$_SESSION['partida'] = Partidas::buscarPartida($usuario, $_SESSION['pjElegido']);
+			header('Location:game.php?&accion=esperando&tab=1');
 		}
 		elseif ($_GET['accion']=="esperando") {
 

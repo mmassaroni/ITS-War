@@ -4,15 +4,17 @@
 
 		private $id;
 		private $personaje;
+		private $numero;
 		private $nombre;
 		private $costo_energia;
 		private $efecto;
 		private $potencia;
 		private $tipo;
 
-		public function __construct($id, $personaje, $nombre, $costo_energia, $efecto, $potencia, $tipo){
+		public function __construct($id, $personaje, $nombre, $numero, $costo_energia, $efecto, $potencia, $tipo){
 			$this->id=$id;
 			$this->personaje=$personaje;
+			$this->numero=$numero;
 			$this->nombre=$nombre;
 			$this->costo_energia=$costo_energia;
 			$this->efecto=$efecto;
@@ -36,6 +38,14 @@
 
 		public function setnombre($nombre){
 			$this->nombre=$nombre;
+		}
+
+		public function getnumero(){
+			return $this->numero;
+		}
+
+		public function setnumero($numero){
+			$this->numero=$numero;
 		}
 
 		public function getcosto_energia(){
