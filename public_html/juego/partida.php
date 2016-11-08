@@ -6,7 +6,7 @@
 		private $estado;
 		private $colJugadores = array();
 
-		public function __construct($id, $estado, $colJugadores){
+		public function __construct($id, $estado, $colJugadores=null){
 			$this->id=$id;
 			$this->estado=$estado;
 			$this->colJugadores=$colJugadores;

@@ -34,7 +34,7 @@
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");
 			Usuarios::actualizar($usuario);
-		} 
+		}
 		elseif ($_GET['accion']=="salir") {
 			$usuario->setestado("desconectado");
 			Usuarios::actualizar($usuario);

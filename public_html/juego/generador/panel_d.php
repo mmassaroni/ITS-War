@@ -82,15 +82,24 @@
 		$reg = $registros->fetch_array();
 		mysqli_close($db);
 		if ($reg['cantidadReg'] == 4) {
-			$db2 = new Conexion();
-			$consulta = $db2->query("select numero from usu_pj_partida where partida = ".$_SESSION['partida']->getid()." and usuario =".$_SESSION['objUsu']->getid()." order by numero") or die("ERROR CON LA BD2");
-			$numeroJugador = $consulta->fetch_array();
+			// $db2 = new Conexion();
+			// $consulta = $db2->query("select numero from usu_pj_partida where partida = ".$_SESSION['partida']->getid()." and usuario =".$_SESSION['objUsu']->getid()." order by numero") or die("ERROR CON LA BD2");
+			// $numeroJugador = $consulta->fetch_array();
 			mysqli_close($db2);
 			//if ($numeroJugador['numero'] == 1) {
 				$db3 = new Conexion();
 				$db3->query("update partida set estado = 'en curso' where id = ".$_SESSION['partida']->getid()) or die("ERROR EN LA BD3");
 				mysqli_close($db3);
 			//}
+			$jugadores = new Usus_Pers_Partida();
+			$db3 = new Conexion();
+			$regJugadores = $db3->query("select * from usu_pj_partida where partida = ". $_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+			while($regJugador = $regJugadores->fetch_array()){
+				$jugador = new Usu_Per_Partida($_SESSION['partida']->getid(), $regJugador['numero'], $regJugador['usuario'], $regJugador['personaje'], $regJugador['fuerza'], $regJugador['resistencia'], $regJugador['vida'], $regJugador['energia']);
+				$jugadores->agregarJugador($regJugador['numero'], $jugador);
+			}
+			$_SESSION['partida']->setcolJugadores($jugadores);
+
 			echo "<script>window.open('../../game.php?&accion=jugando&tab=1', '_self');</script>";
 		}	
 	}
