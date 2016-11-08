@@ -135,7 +135,7 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href=<?php if ($_GET['accion'] == 'esperando') { echo "'game.php'"; } else { echo "'game.php?accion=eligiendo'"; } ?> id="myBtn" <?php if ($_GET['accion'] == 'jugando') {echo "style=display:none";} ?>><img src=<?php if ($_GET['accion'] == 'esperando') { echo "'/images/Btn_stop.png'"; } else { echo "'/images/Btn_play.png'"; } ?> id="Btn_play"></a></div>
+					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href=<?php if ($_GET['accion'] == 'esperando') { echo "'game.php?accion=saliendo'"; } else { echo "'game.php?accion=eligiendo'"; } ?> id="myBtn" <?php if ($_GET['accion'] == 'jugando') {echo "style=display:none";} ?>><img src=<?php if ($_GET['accion'] == 'esperando') { echo "'/images/Btn_stop.png'"; } else { echo "'/images/Btn_play.png'"; } ?> id="Btn_play"></a></div>
 					
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
@@ -168,7 +168,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require('juego/generador/panel_3.php');}?>
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require_once('juego/generador/panel_3.php');}?>
 				</div><!-- cierre panel3 -->
 
 			</div>

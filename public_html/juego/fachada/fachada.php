@@ -41,6 +41,12 @@
 			session_destroy();
 			header("location:/");
 		}
+		elseif ($_GET['accion']=="saliendo") {
+			$usuario->setestado("conectado");
+			Usuarios::actualizar($usuario);
+			saliendoPartida($_SESSION['objUsu']->getid(), $_SESSION['partida']->getid());
+			header("Location:game.php");
+		}
 
 	}
 	
@@ -85,4 +91,10 @@
 		return $nombre['nombre'];
 	}
 
+	function saliendoPartida($usu, $partida){
+		$db = new Conexion();
+		$db->query("delete from usu_pj_partida where usuario = " . $usu . " AND partida = " . $partida);
+		mysqli_close($db);
+		session_destroy($_SESSION['partida']);
+	}
 ?>
