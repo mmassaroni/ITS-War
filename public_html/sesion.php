@@ -1,13 +1,18 @@
 <?php 
 require('juego/fachada/fachada.php');
 session_start();
-if ($_GET['log']==1) {
-	$_SESSION['objUsu'] = Usuarios::login($_REQUEST['usu_email'], $_REQUEST['pass']);
-	header('Location:game.php');
-} elseif ($_GET['make']==1) {
-	$_SESSION['objUsu'] = Usuarios::registro($_REQUEST['usu'], $_REQUEST['email'], $_REQUEST['pass']);
-	header("Location:game.php");
-}
+//if (empty($_SESSION['objUsu'])){
+	if ($_GET['log']==1) {
+		$_SESSION['objUsu'] = Usuarios::login($_REQUEST['usu_email'], $_REQUEST['pass']);
+		header('Location:game.php');
+	} elseif ($_GET['make']==1) {
+		$_SESSION['objUsu'] = Usuarios::registro($_REQUEST['usu'], $_REQUEST['email'], $_REQUEST['pass']);
+		header("Location:game.php");
+	}
+// }else{
+// 	die("Ya tiene una sesión iniciada");
+// }
+
 
 ?>
 
