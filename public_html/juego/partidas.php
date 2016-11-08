@@ -31,7 +31,7 @@
 
 		public static function unirsePartida($usuario, $pjElegido, $regPartida){
 			$db = new Conexion();
-			// $jugadores = new Usus_Pers_Partida();
+			$jugadores = new Usus_Pers_Partida();
 			$regJugadores = $db->query("select * from usu_pj_partida where partida = ". $regPartida['id']) or die("ERROR CON LA BD");
 			while($regJugador = $regJugadores->fetch_array()){
 				$jugador = new Usu_Per_Partida($regPartida['id'], $regJugador['numero'], $regJugador['usuario'], $regJugador['personaje'], $regJugador['fuerza'], $regJugador['resistencia'], $regJugador['vida'], $regJugador['energia']);
