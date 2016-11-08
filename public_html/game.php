@@ -135,7 +135,7 @@
 				</div><!--cierre panel1-->
 				
 				<div id="tablero">
-					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href=<?php if ($_GET['accion'] == 'esperando') { echo "'game.php'"; } else { echo "'game.php?accion=eligiendo'"; } ?> id="myBtn" <?php if ($_GET['accion'] != null) {echo "style=display:none";} ?>><img src=<?php if ($_GET['accion'] == 'esperando') { echo "'/images/Btn_stop.png'"; } else { echo "'/images/Btn_play.png'"; } ?> id="Btn_play"></a></div>
+					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href=<?php if ($_GET['accion'] == 'esperando') { echo "'game.php'"; } else { echo "'game.php?accion=eligiendo'"; } ?> id="myBtn" <?php if ($_GET['accion'] == 'jugando') {echo "style=display:none";} ?>><img src=<?php if ($_GET['accion'] == 'esperando') { echo "'/images/Btn_stop.png'"; } else { echo "'/images/Btn_play.png'"; } ?> id="Btn_play"></a></div>
 					
 					<!-- The Modal -->
 					<div id="myModal" class="modal">
