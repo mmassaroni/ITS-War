@@ -53,21 +53,23 @@
 			        var style = getComputedStyle(this,null) ;
 			        var borderTop = getNumericStyleProperty(style,"border-top-width") ;
 			        var borderLeft = getNumericStyleProperty(style,"border-left-width") ;
-			        y += borderTop + posicion.top ;
-			        x += borderLeft + posicion.left ;
+			        //y += borderTop + posicion.top ;
+			        //x += borderLeft + posicion.left ;
 			        // console.log('x,y : ' + x + ',' + y);
 
 			        
 			        // Tomando posicion sin el tablero
-			        var x_ = ev.pageX - this.offsetLeft;
-			        var y_ = ev.pageY - this.offsetTop;
+			        var x = ev.pageX - this.offsetLeft;
+			        var y = ev.pageY - this.offsetTop;
 			        // considerando bordes
-			        y_ += borderTop ;
-			        x_ += borderLeft ;
+			        //y += borderTop ;
+			        //x += borderLeft ;
 			        // console.log('x_,y_ : ' + x_ + ',' + y_);
 
 			        
 			        //alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
+
+			        alert("x: " + x + " y: " + y);
 			    });
 			});
 			

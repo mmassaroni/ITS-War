@@ -34,6 +34,7 @@
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");
 			Usuarios::actualizar($usuario);
+
 		}
 		elseif ($_GET['accion']=="salir") {
 			$usuario->setestado("desconectado");
@@ -59,30 +60,6 @@
 		return $personajeParaRetornar;
 	}
 
-	/*function esperando(){
-		sleep(5);
-		//actualizo el objeto partida
-		//si somos 4
-			//si soy el creador update partida en la base de datos para que este en curso y seguir = false
-			//si soy un participante seguir = false
-			//header('Location:game.php?&accion=jugando&tab=1&personaje='.$_GET['personaje']);
-		//si no somos 4
-			header('Location:game.php?&accion=esperando&tab=1&personaje='.$_GET['personaje']);
-		
-
-		if(){
-			$total = "";
-			for ($segundos = 1; $segundos <= 5; $segundos++){
-				echo "<p>".$segundos."</p>";
-				//Para cada iteración 1 segundo
-				sleep($segundos);
-				$total = $segundos;
-			}
-			echo "Tiempo completado: $total segundos";
-		}else{
-			header('Location:');
-		
-	}*/
 	function nombreJugador($id){
 		$db = new Conexion();
 		$reg = $db->query("select nombre from usuario where id = " . $id);
@@ -97,4 +74,50 @@
 		mysqli_close($db);
 		session_destroy($_SESSION['partida']);
 	}
+
+	function posicionDeLaFicha($coordenadaX, $coordenadaY){
+		$xFinal = null;
+		$yFinal = null;
+		$numeroX = intval((strval($coordenadaX / 62.5))[0]);
+		$numeroY = intval((strval($coordenadaY / 62.5))[0]);
+
+		function posicionFinal($numero){
+			switch ($numero) {
+				case 0:
+					return 0;
+					break;
+				case 1:
+					return 62.5;
+					break;
+				case 2:
+					return 125;
+					break;
+				case 3:
+					return 187.5;
+					break;
+				case 4:
+					return 250;
+					break;
+				case 5:
+					return 312.5;
+					break;
+				case 6:
+					return 375;
+					break;
+				case 7:
+					return 437.5;
+					break;
+				default:
+					die("ERROR en coordenadas");
+					break;
+			}
+		}
+
+		$xFinal = posicionFinal($numeroX);
+		$yFinal = posicionFinal($numeroY);
+
+		$coordenadas = array($xFinal, $yFinal);
+		return $coordenadas
+	}
+
 ?>
