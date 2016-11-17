@@ -291,7 +291,6 @@ ul.topnav li.ex, a, button {
    height: 50%;
 }
 
-
 /* ################################ */
 /* # MODAL - PERSONAJES pa elegir # */
 /* ################################ */
@@ -360,3 +359,62 @@ ul.topnav li.ex, a, button {
 }
 
 .modal-body {padding: 2px 16px;}
+
+
+
+/***  TOOL TIP  ***/
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #2f2f2f;
+    color: #fff;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11pt;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 113%;
+    left: 50%;
+    margin-left: -60px;
+    cursor: default;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -119px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2f2f2f transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+/*CIERRE TOOL TIP*/
+
+
+.movBtn {
+  padding: 10px 18px;
+  margin-top: 11px;
+  background-color: rgba(255,255,255,0.2);
+  line-height: 3;
+  text-decoration: none;
+  color: white;
+  border: 1px solid;
+  border-radius: 1px;
+  margin: 0 15px;
+}
