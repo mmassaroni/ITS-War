@@ -17,14 +17,14 @@
 			$db = new Conexion();
 			$db->query("insert into partida(estado) values('creando')") or die("ERROR CON LA BD");
 			// $jugadores = new Usus_Pers_Partida();
-			// $db2 = new conexion();
-			// $db2->query("insert into usu_pj_partida(partida, numero, usuario, personaje, fuerza, resistencia, vida, energia) values(".mysqli_INSERT_ID($db).", 1, ".$usuario->getid().", ".$pjElegido->getid().", ".$pjElegido->getfuerza().", ".$pjElegido->getresistencia().", ".$pjElegido->getvida().", ".$pjElegido->getenergia().")") or die("ERROR CON LA BD");
+			$db2 = new conexion();
+			$db2->query("insert into usu_pj_partida(partida, numero, usuario, personaje, fuerza, resistencia, vida, energia) values(".mysqli_INSERT_ID($db).", 1, ".$usuario->getid().", ".$pjElegido->getid().", ".$pjElegido->getfuerza().", ".$pjElegido->getresistencia().", ".$pjElegido->getvida().", ".$pjElegido->getenergia().")") or die("ERROR CON LA BD");
 			// $jugador = new Usu_Per_Partida(mysqli_INSERT_ID($db), 1, $usuario->getid(), $pjElegido->getid(), $pjElegido->getfuerza(), $pjElegido->getresistencia(), $pjElegido->getvida(), $pjElegido->getenergia());
 			// $jugadores->agregarJugador(1, $jugador);
 			// $partida = new Partida(mysqli_INSERT_ID($db), 'creando', $jugadores);
-			$partida = new Partida(mysqli_INSERT_ID($db), 'creando', $jugadores);
+			$partida = new Partida(mysqli_INSERT_ID($db), 'creando');
 			mysqli_close($db);
-			// mysqli_close($db2);
+			mysqli_close($db2);
 
 			return $partida;
 		}

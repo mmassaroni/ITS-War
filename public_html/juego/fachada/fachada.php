@@ -35,6 +35,7 @@
 			$usuario->setestado("jugando");
 			Usuarios::actualizar($usuario);
 
+
 		}
 		elseif ($_GET['accion']=="salir") {
 			$usuario->setestado("desconectado");
@@ -78,8 +79,9 @@
 	function posicionDeLaFicha($coordenadaX, $coordenadaY){
 		$xFinal = null;
 		$yFinal = null;
-		$numeroX = intval((strval($coordenadaX / 62.5))[0]);
-		$numeroY = intval((strval($coordenadaY / 62.5))[0]);
+		$numeroX = intval(strval($coordenadaX / 62.5)[0]);
+		$numeroY = intval(strval($coordenadaY / 62.5)[0]);
+
 
 		function posicionFinal($numero){
 			switch ($numero) {
@@ -87,25 +89,25 @@
 					return 0;
 					break;
 				case 1:
-					return 62.5;
+					return 61;
 					break;
 				case 2:
-					return 125;
+					return 123;
 					break;
 				case 3:
-					return 187.5;
+					return 185;
 					break;
 				case 4:
-					return 250;
+					return 247;
 					break;
 				case 5:
-					return 312.5;
+					return 308;
 					break;
 				case 6:
-					return 375;
+					return 369;
 					break;
 				case 7:
-					return 437.5;
+					return 432;
 					break;
 				default:
 					die("ERROR en coordenadas");
@@ -117,7 +119,7 @@
 		$yFinal = posicionFinal($numeroY);
 
 		$coordenadas = array($xFinal, $yFinal);
-		return $coordenadas
+		return $coordenadas;
 	}
 
 ?>

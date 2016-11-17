@@ -19,6 +19,7 @@
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 		<script type="text/javascript">
+
 			$(function () {
 		    	// Ubico el tablero en la pantalla
 		        var elemento = $("#tablero");
@@ -72,7 +73,8 @@
 			        alert("x: " + x + " y: " + y);
 			    });
 			});
-			
+
+
 			<?php
 
 				if ($_GET['accion'] == "esperando") { 
@@ -101,6 +103,7 @@
 					echo 'function cargarPanelesPrimeraVezJugando(){
 							$("#panel1").load("juego/generador/panel_iz.php"); 
 				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
+				        	$("#tablero").load("juego/generador/tablero.php?accion='.$_GET['accion'].'");
 						}';
 				}
 			?>
@@ -136,29 +139,54 @@
 					<?php if ($_GET['accion'] != "esperando" and $_GET['accion'] != "jugando"){echo "<img src='/images/mrBean.gif' style='margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}?>
 				</div><!--cierre panel1-->
 				
-				<div id="tablero">
-					<div id="contPlay" <?php if ($_GET['tab'] == 1 ) {echo "style='background-color: rgba(0,0,0,0)'";} ?>><a href=<?php if ($_GET['accion'] == 'esperando') { echo "'game.php?accion=saliendo'"; } else { echo "'game.php?accion=eligiendo'"; } ?> id="myBtn" <?php if ($_GET['accion'] == 'jugando') {echo "style=display:none";} ?>><img src=<?php if ($_GET['accion'] == 'esperando') { echo "'/images/Btn_stop.png'"; } else { echo "'/images/Btn_play.png'"; } ?> id="Btn_play"></a></div>
-					
-					<!-- The Modal -->
-					<div id="myModal" class="modal">
+				<div id="tablero" <?php if ($_GET['accion']=='jugando') { echo "style='text-align: left;'";	} ?>>
 
-						<!-- Modal content -->
-						<div class="modal-content">
-						    <div class="modal-header">
-						      <span class="close">×</span>
-						      <h2>Elige un personaje</h2>
-						    </div>
-							<?php 
-								foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
-									echo 
-									"<div class='modal-body'>
-										<h3>". $personaje->getnombre() ."</h3>
-										<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
-									</div>";
-								}
-							?>
-						</div>
-					</div>
+
+					<div id="contPlay" 
+<?php if ($_GET['tab'] == 1 ) {
+	echo "style='background-color: rgba(0,0,0,0)'";
+} ?>
+><a href=
+<?php if ($_GET['accion'] == 'esperando') { 
+	echo "'game.php?accion=saliendo'"; 
+	} else { 
+		echo "'game.php?accion=eligiendo'"; 
+	} ?> 
+	id="myBtn" 
+<?php if ($_GET['accion'] == 'jugando') {
+	echo "style=display:none";
+	} ?>
+	><img src=<?php if ($_GET['accion'] == 'esperando') { 
+		echo "'/images/Btn_stop.png'"; 
+	} else { 
+		echo "'/images/Btn_play.png'"; 
+	} ?>
+	id="Btn_play"></a>
+
+	</div>
+	
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+	    <div class="modal-header">
+	      <span class="close">×</span>
+	      <h2>Elige un personaje</h2>
+	    </div>
+		<?php 
+			foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
+				echo 
+				"<div class='modal-body'>
+					<h3>". $personaje->getnombre() ."</h3>
+					<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
+				</div>";
+			}
+		?>
+	</div>
+</div>
+
+
 				</div><!--cierre tablero-->
 				
 				<div id="panel2" class="panel">
