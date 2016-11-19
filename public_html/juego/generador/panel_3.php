@@ -13,13 +13,13 @@ $regDatosHab = $db2->query("SELECT h.numero, h.nombre, h.costo_energia, h.efecto
 </div>
 <hr>
 <div class="ataques">
-	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px"><span class="tooltiptext"><?php echo "Golpe:<br><br>Ataque super normal...<br><br>Efecto: Daño<br>Tipo: Recto<br>Daño: <span style='color: #c70000'>".$datosPer['fuerza']."</span><br>Alcance: <span style='color: #1795de'>2</span><br>Costo de energia: <span style='color: #efea56'>0</span>"; ?></span></a></div>
+	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px"><span class="tooltiptext"><?php echo "<span class='nombreHab'>Golpe</span><br><hr><span class='cuerpoHab'>Efecto: Daño<br>Tipo: Target<br>Daño: <span style='color: #c70000'>".$datosPer['fuerza']."</span><br>Alcance: <span style='color: #1795de'>2</span><br>Costo de energia: <span style='color: #efea56'>0</span></span>"; ?></span></a></div>
 	
 	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px"><span class="tooltiptext">
 		<?php 
 			while ($datosHab = $regDatosHab->fetch_array()) {
 			 	if ($datosHab['numero'] == 1) {
-			 		echo $datosHab['nombre'].":<br><br>Efecto: ".$datosHab['efecto']."<br>Tipo: ".$datosHab['tipo']."<br>Daño: <span style='color: #c70000'>".($datosPer['fuerza'] * $datosHab['potencia'])."</span><br>Alcance: <span style='color: #1795de'>".$datosHab['alcance']."</span><br>Costo de energia: <span style='color: #efea56'>".$datosHab['costo_energia']."</span>";
+			 		echo "<span class='nombreHab'>".$datosHab['nombre']."</span><br><hr><span class='cuerpoHab'>Efecto: ".$datosHab['efecto']."<br>Tipo: ".$datosHab['tipo']."<br>Daño: <span style='color: #c70000'>".($datosPer['fuerza'] * $datosHab['potencia'])."</span><br>Alcance: <span style='color: #1795de'>".$datosHab['alcance']."</span><br>Costo de energia: <span style='color: #efea56'>".$datosHab['costo_energia']."</span></span>";
 			 		break;
 			 	}
 			} 
@@ -30,7 +30,7 @@ $regDatosHab = $db2->query("SELECT h.numero, h.nombre, h.costo_energia, h.efecto
 		<?php 
 			while ($datosHab = $regDatosHab->fetch_array()) {
 			 	if ($datosHab['numero'] == 2) {
-			 		echo $datosHab['nombre'].":<br><br>Efecto: ".$datosHab['efecto']."<br>Tipo: ".$datosHab['tipo']."<br>Daño: <span style='color: #c70000'>".($datosPer['fuerza'] * $datosHab['potencia'])."</span><br>Alcance: <span style='color: #1795de'>".$datosHab['alcance']."</span><br>Costo de energia: <span style='color: #efea56'>".$datosHab['costo_energia']."</span>";
+			 		echo "<span class='nombreHab'>".$datosHab['nombre']."</span><br><hr><span class='cuerpoHab'>Efecto: ".$datosHab['efecto']."<br>Tipo: ".$datosHab['tipo']."<br>Daño: <span style='color: #c70000'>".($datosPer['fuerza'] * $datosHab['potencia'])."</span><br>Alcance: <span style='color: #1795de'>".$datosHab['alcance']."</span><br>Costo de energia: <span style='color: #efea56'>".$datosHab['costo_energia']."</span></span>";
 			 		break;
 			 	}
 			} 

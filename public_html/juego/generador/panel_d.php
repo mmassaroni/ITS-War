@@ -14,7 +14,7 @@
 	require_once('../usuarios.php');
 	session_start();
 	$db = new Conexion();
-	$registros = $db->query("select upp.numero, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
+	$registros = $db->query("select upp.numero, u.id, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
 	while ($reg = $registros->fetch_array()) {
 		if ($reg['numero'] == 3){
 			$datosJ3 = $reg;
@@ -25,10 +25,17 @@
 	mysqli_close($db);
 ?>
 <div class="j3">
-	<h1><?php
-			if (empty($datosJ3['nombreJugador'])){ echo "JUGADOR3";} else{ echo $datosJ3['nombreJugador'];} 
-		?>
-	</h1>
+	<?php
+		if (empty($datosJ3['nombreJugador'])){ 
+			echo "<h1>JUGADOR3</h1>";
+		}else{ 
+			if ($datosJ3['id'] == $_SESSION['objUsu']->getid()) {
+				echo "<h1 style='background-color: #3B8686'>".$datosJ3['nombreJugador']."</h1>";
+			}else{
+				echo "<h1>".$datosJ3['nombreJugador']."</h1>";
+			}
+		}	 
+	?>
 	<div class="row vertical">
 		<div class="img-per"><img <?php if (empty($datosJ3['imgCuerpo'])){ echo "src='../../images/mrBean.gif'"; } else{echo "src='" . $datosJ3['imgCuerpo'] . "'";} echo "title='".$datosJ3['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">
@@ -51,10 +58,17 @@
 </div>
 <hr/>
 <div class="j4">
-	<h1><?php
-			if (empty($datosJ4['nombreJugador'])){ echo "JUGADOR4";} else{ echo $datosJ4['nombreJugador'];} 
-		?>
-	</h1>
+	<?php
+		if (empty($datosJ4['nombreJugador'])){ 
+			echo "<h1>JUGADOR4</h1>";
+		}else{ 
+			if ($datosJ4['id'] == $_SESSION['objUsu']->getid()) {
+				echo "<h1 style='background-color: #3B8686'>".$datosJ4['nombreJugador']."</h1>";
+			}else{
+				echo "<h1>".$datosJ4['nombreJugador']."</h1>";
+			}
+		}	 
+	?>
 	<div class="row vertical">
 		<div class="img-per"><img <?php if (empty($datosJ4['imgCuerpo'])){ echo "src='../../images/mrBean.gif'"; } else{echo "src='" . $datosJ4['imgCuerpo'] . "'";} echo "title='".$datosJ4['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">

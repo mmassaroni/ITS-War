@@ -370,12 +370,21 @@ ul.topnav li.ex, a, button {
     display: inline-block;
 }
 
+.tooltip .tooltiptext .nombreHab{
+  text-align: center;
+}
+
+.tooltip .tooltiptext .cuerpoHab {
+  text-align: left;
+  float: left;
+}
+
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 350px;
     background-color: #2f2f2f;
     color: #fff;
-    text-align: left;
+    
     font-family: 'Open Sans', sans-serif;
     font-size: 11pt;
     border-radius: 6px;
