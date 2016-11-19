@@ -19,6 +19,8 @@
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 		<script type="text/javascript">
+			// Habilita el ajax para tomar las coordenadas con valor 1
+			var tomarXY = 0;
 
 			$(function () {
 		    	// Ubico el tablero en la pantalla
@@ -70,7 +72,22 @@
 			        
 			        //alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
 
-			        //alert("x: " + x + " y: " + y);
+			        if (tomarXY == 1) {
+			        	tomarXY = 0;
+			        	function mover(){
+			        		$.ajax({
+				        		data: { coordenadaX: x, coordenadaY: y },
+								type: "POST",
+						        url: "juego/fachada/mover.php",
+						        dataType: "json",
+						        success: function (respuesta) { 
+						        	document.getElementById("tablero").style.cursor = "auto";
+						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+								}
+							});
+			        	}
+			        	mover();
+			        }
 			    });
 			});
 
@@ -112,12 +129,35 @@
 						        url: "juego/fachada/turno.php",
 						        success: function (respuesta) { 
 						        	if (respuesta == 1) {
-						        		alert(respuesta);
 						        		clearInterval(posicionarte);
+						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        		alert("Elige tu posicion inicial en el tablero.");
+						        		document.getElementById("tablero").style.cursor = "crosshair";
+										tomarXY = 1;
+						        	} else {
+						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        		tomarXY = 0;
 						        	}
 							}
 							})}
-							, 3000);';
+							, 2000);';
+
+					echo 'var verPos = setInterval(function verPosicionamiento(){
+							$.ajax({
+								type: "POST",
+						        url: "juego/generador/tablero.php",
+						        dataType: "json",
+						        success: function (respuesta) { 
+						        	if (respuesta == 4) {
+						        		clearInterval(verPos);
+						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        		alert("¡Comienza la partida! Espera a que se te indique tu turno.");
+						        	} else {
+						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        	}
+							}
+							})}
+							, 2000);';
 
 				}
 
@@ -201,7 +241,6 @@
 		?>
 	</div>
 </div>
-
 
 				</div><!--cierre tablero-->
 				

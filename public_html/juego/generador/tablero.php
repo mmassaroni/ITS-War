@@ -21,11 +21,12 @@
 <?php 
 
 	if ($_GET['accion'] == 'jugando') {
-		
+		$salir = 0;
 		$db = new Conexion();
 		$registros = $db->query("select upp.usuario, upp.ubicacionx, upp.ubicaciony, p.imgFicha from usu_pj_partida upp, personaje p where upp.partida = ".$_SESSION['partida']->getid()." and upp.personaje = p.id") or die("ERROR CON LA BD");
 		while ($reg = $registros->fetch_array()) {
 			if(!is_null($reg['ubicacionx'])) {
+				$salir += 1;
 				if ($reg['usuario'] == $_SESSION['objUsu']->getid()) {
 					echo "<img src=\"".$reg['imgFicha']."\" style=\"position: absolute; background-color: #3b8686; max-width: 62.5px; margin-top: ".$reg['ubicaciony']."px; margin-left: ".$reg['ubicacionx']."px\">";
 				} else {
@@ -34,7 +35,7 @@
 			}
 		}
 		mysqli_close($db);
-
+		echo json_encode($salir);
 	}
 
 ?>

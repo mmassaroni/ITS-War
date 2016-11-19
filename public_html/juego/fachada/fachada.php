@@ -1,17 +1,17 @@
 <?php 
-	require_once('juego/conexion.php');
-	require_once('juego/habilidad.php');
-	require_once('juego/habilidades.php');
-	require_once('juego/partida.php');
-	require_once('juego/partidas.php');
-	require_once('juego/personaje.php');
-	require_once('juego/personajes.php');
-	require_once('juego/potenciador.php');
-	require_once('juego/potenciador_partida.php');
-	require_once('juego/usu_per_partida.php');
-	require_once('juego/usus_pers_partida.php');
-	require_once('juego/usuario.php');
-	require_once('juego/usuarios.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/conexion.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/habilidad.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/habilidades.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/partida.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/partidas.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/personaje.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/personajes.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/potenciador.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/potenciador_partida.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/usu_per_partida.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/usus_pers_partida.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/usuario.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/juego/usuarios.php');
 
 	function estados($usuario){
 		if ($_GET['accion']==null) {
