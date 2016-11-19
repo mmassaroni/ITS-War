@@ -14,12 +14,28 @@
 	require_once('../usuarios.php');
 	session_start();
 
-	$db = new Conexion();
-	$registros = $db->query("select usuario, turno from usu_pj_partida where partida = ". $_SESSION['partida']->getid()) or die("ERROR CON LA BD");
-	while ($reg = $registros->fetch_array()) {
-		if ($reg['usuario'] == $_SESSION['objUsu']->getid() && $reg['turno'] == 1) {
-			echo $reg['turno'];
+	if ($_POST['accion'] = "miTurno") {
+		$respuesta = array();
+
+		$db = new Conexion();
+		$registros = $db->query("select usuario, turno from usu_pj_partida where partida = ". $_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+		while ($reg = $registros->fetch_array()) {
+			if ($reg['usuario'] == $_SESSION['objUsu']->getid() && $reg['turno'] == 1) {
+				$respuesta[0] = $reg['turno'];
+			}
 		}
+		mysqli_close($db);
+
+		$db2 = new Conexion();
+		$registros = $db2->query("select * from usu_pj_partida where partida = ". $_SESSION['partida']->getid() ." and ubicacionx IS NOT NULL and ubicaciony IS NOT NULL");
+		$jugadores = 0;
+		while ($reg = $registros->fetch_array()) {
+			$jugadores += 1;
+		}
+		mysqli_close($db2);
+		$respuesta[1] = $jugadores;
+
+		echo json_encode($respuesta);
 	}
 
 ?>

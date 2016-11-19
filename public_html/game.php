@@ -83,6 +83,7 @@
 						        success: function (respuesta) { 
 						        	document.getElementById("tablero").style.cursor = "auto";
 						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        	//setInterval(posicionarte);
 								}
 							});
 			        	}
@@ -125,39 +126,28 @@
 
 					echo 'var posicionarte = setInterval(function turno(){
 							$.ajax({
+								data: { accion : "miTurno" },
 								type: "POST",
 						        url: "juego/fachada/turno.php",
+						        dataType: "json",
 						        success: function (respuesta) { 
-						        	if (respuesta == 1) {
-						        		clearInterval(posicionarte);
+						        	if (respuesta[0] == 1 && respuesta[1] < 4) {
+						        		//clearInterval(posicionarte);
 						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 						        		alert("Elige tu posicion inicial en el tablero.");
 						        		document.getElementById("tablero").style.cursor = "crosshair";
 										tomarXY = 1;
 						        	} else {
 						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        		tomarXY = 0;
 						        	}
-							}
-							})}
-							, 2000);';
 
-					echo 'var verPos = setInterval(function verPosicionamiento(){
-							$.ajax({
-								type: "POST",
-						        url: "juego/generador/tablero.php",
-						        dataType: "json",
-						        success: function (respuesta) { 
-						        	if (respuesta == 4) {
-						        		clearInterval(verPos);
-						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        		alert("¡Comienza la partida! Espera a que se te indique tu turno.");
-						        	} else {
-						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+						        	if (respuesta[1] == 4) { 
+						        		clearInterval(posicionarte);
+						        		alert("Arranca"); 
 						        	}
 							}
 							})}
-							, 2000);';
+							, 5000);';
 
 				}
 
