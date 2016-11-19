@@ -43,8 +43,9 @@
 				$registros = $db->query("SELECT numero, turno from usu_pj_partida where partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
 				if($registros->fetch_array()['turno'] != null){
 					$var = false;
-					while($registro = $registros->fetch)
+					while($registro = $registros->fetch){
 						$_SESSION['partida']->getcolJugadores[$registro['numero']]->setturno($registro['turno']);
+					}
 				}
 				mysqli_close($db);
 			}

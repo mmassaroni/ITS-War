@@ -106,10 +106,23 @@
 				        	$("#tablero").load("juego/generador/tablero.php?accion='.$_GET['accion'].'");
 						}';
 
+					echo 'var posicionarte = setInterval(function turno(){
+							$.ajax({
+								type: "POST",
+						        url: "juego/fachada/turno.php",
+						        success: function (respuesta) { 
+						        	if (respuesta == 1) {
+						        		alert(respuesta);
+						        		clearInterval(posicionarte);
+						        	}
+							}
+							})}
+							, 3000);';
 
 				}
 
 			?>
+			
 		</script>	
 		<style>	
 			<?php if ($_GET['tab'] == 1 ) {echo "
