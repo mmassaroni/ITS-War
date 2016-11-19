@@ -18,7 +18,7 @@
 
 			$registrosPer = $db->query("select * from personaje") or die("ERROR CON LA BD");
 			while($registroPer = $registrosPer->fetch_array()){
-				$objPer = new Personaje($registroPer["id"], $registroPer["nombre"], $registroPer["imgCuerpo"], $registroPer["imgFicha"], $registroPer["fuerza"], $registroPer["movimiento"], $registroPer["resistencia"], $registroPer["alcance"], $registroPer["vida"], $registroPer["energia"], $registroPer["precio"]);				
+				$objPer = new Personaje($registroPer["id"], $registroPer["nombre"], $registroPer["imgCuerpo"], $registroPer["imgFicha"], $registroPer["fuerza"], $registroPer["movimiento"], $registroPer["resistencia"], $registroPer["vida"], $registroPer["energia"], $registroPer["precio"]);				
 
 				$objPer->setHabilidades(Habilidades::habilidadesPorPj($objPer));
 				$personajes->agregarPersonaje($objPer);

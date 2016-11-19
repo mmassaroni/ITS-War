@@ -9,9 +9,10 @@
 		private $costo_energia;
 		private $efecto;
 		private $potencia;
+		private $alcance;
 		private $tipo;
 
-		public function __construct($id, $personaje, $nombre, $numero, $costo_energia, $efecto, $potencia, $tipo){
+		public function __construct($id, $personaje, $nombre, $numero, $costo_energia, $efecto, $potencia, $alcance, $tipo){
 			$this->id=$id;
 			$this->personaje=$personaje;
 			$this->numero=$numero;
@@ -19,6 +20,7 @@
 			$this->costo_energia=$costo_energia;
 			$this->efecto=$efecto;
 			$this->potencia=$potencia;
+			$this->alcance=$alcance;
 			$this->tipo=$tipo;
 		}
 
@@ -70,6 +72,14 @@
 
 		public function setpotencia($potencia){
 			$this->potencia=$potencia;
+		}
+
+		public function getalcance(){
+			return $this->alcance;
+		}
+
+		public function setalcance($alcance){
+			$this->alcance=$alcance;
 		}
 
 		public function gettipo(){

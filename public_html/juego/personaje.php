@@ -9,13 +9,12 @@
 		private $fuerza;
 		private $movimiento;
 		private $resistencia;
-		private $alcance;
 		private $vida;
 		private $energia;
 		private $precio;
 		private $habilidades;
 
-		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $alcance, $vida, $energia, $precio, $habilidades=null){
+		public function __construct($id, $nombre, $imgCuerpo, $imgFicha, $fuerza, $movimiento, $resistencia, $vida, $energia, $precio, $habilidades=null){
 			$this->id=$id;
 			$this->nombre=$nombre;
 			$this->imgCuerpo=$imgCuerpo;
@@ -23,7 +22,6 @@
 			$this->fuerza=$fuerza;
 			$this->movimiento=$movimiento;
 			$this->resistencia=$resistencia;
-			$this->alcance=$alcance;
 			$this->vida=$vida;
 			$this->energia=$energia;
 			$this->precio=$precio;
@@ -94,14 +92,6 @@
 
 		public function setresistencia($resistencia){
 			$this->resistencia=$resistencia;
-		}
-
-		public function getalcance(){
-			return $this->alcance;
-		}
-
-		public function setalcance($alcance){
-			$this->alcance=$alcance;
 		}
 
 		public function getvida(){
