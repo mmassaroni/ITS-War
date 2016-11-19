@@ -4,7 +4,7 @@
 
 		private $id;
 		private $estado;
-		private $colJugadores = array();
+		private $colJugadores;
 
 		public function __construct($id, $estado, $colJugadores=null){
 			$this->id=$id;

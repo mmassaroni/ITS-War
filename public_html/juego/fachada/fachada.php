@@ -34,8 +34,20 @@
 		elseif ($_GET['accion']=="jugando") {
 			$usuario->setestado("jugando");
 			Usuarios::actualizar($usuario);
-
-
+			if($_SESSION['partida']->getcolJugadores()->getususPersPartida()[1]->getusuario() == $usuario->getid()){
+				$num = rand(1, 4);
+				usus_pers_partida::asignarTurno($_SESSION['partida'], $num);
+			}
+			while ($var == true) {
+				$db = new Conexion();
+				$registros = $db->query("SELECT numero, turno from usu_pj_partida where partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+				if($registros->fetch_array()['turno'] != null){
+					$var = false;
+					while($registro = $registros->fetch)
+						$_SESSION['partida']->getcolJugadores[$registro['numero']]->setturno($registro['turno']);
+				}
+				mysqli_close($db);
+			}
 		}
 		elseif ($_GET['accion']=="salir") {
 			$usuario->setestado("desconectado");

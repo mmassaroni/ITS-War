@@ -85,7 +85,7 @@
 			// $db2 = new Conexion();
 			// $consulta = $db2->query("select numero from usu_pj_partida where partida = ".$_SESSION['partida']->getid()." and usuario =".$_SESSION['objUsu']->getid()." order by numero") or die("ERROR CON LA BD2");
 			// $numeroJugador = $consulta->fetch_array();
-			mysqli_close($db2);
+			//mysqli_close($db2);
 			//if ($numeroJugador['numero'] == 1) {
 				$db3 = new Conexion();
 				$db3->query("update partida set estado = 'en curso' where id = ".$_SESSION['partida']->getid()) or die("ERROR EN LA BD3");

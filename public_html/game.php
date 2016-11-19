@@ -70,7 +70,7 @@
 			        
 			        //alert("x-: " + x_ + " y-: " + y_ + " x+: " + x + " y+: " + y);
 
-			        alert("x: " + x + " y: " + y);
+			        //alert("x: " + x + " y: " + y);
 			    });
 			});
 
@@ -105,7 +105,10 @@
 				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
 				        	$("#tablero").load("juego/generador/tablero.php?accion='.$_GET['accion'].'");
 						}';
+
+
 				}
+
 			?>
 		</script>	
 		<style>	
