@@ -24,6 +24,7 @@
 			var accion = "posicionamiento";
 			var mover = 0;
 			var atacar = 0;
+			var habilidad = 0;
 
 			$(function () {
 		    	// Ubico el tablero en la pantalla
@@ -79,7 +80,7 @@
 			        	tomarXY = 0;
 			        	function mover(){
 			        		$.ajax({
-				        		data: { coordenadaX: x, coordenadaY: y },
+				        		data: { coordenadaX: x, coordenadaY: y, accion: accion, habilidad},
 								type: "POST",
 						        url: "juego/fachada/mover.php",
 						        success: function () { 
@@ -88,12 +89,7 @@
 						        	if (accion == "posicionamiento") {
 						        		pasar();
 						        		controlPosicion();	
-						        	}else if (accion == "mover"){
-						        		if (mover == 1 && atacar == 1) {
-						        			pasar();
-						        		}
-						        		jugar();
-						        	}else if (accion == "atacar"){
+						        	}else if (accion == "mover" || accion == "atacar"){
 						        		if (mover == 1 && atacar == 1) {
 						        			pasar();
 						        		}
@@ -138,7 +134,7 @@
 				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
 				        	$("#tablero").load("juego/generador/tablero.php?accion='.$_GET['accion'].'");
 						}
-						';
+					';
 
 					echo '
 
@@ -313,7 +309,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/mate.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 4s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 4s; animation-iteration-count: infinite; width:160px'>";}?>
 				</div><!-- cierre panel3 -->
 
 			</div>

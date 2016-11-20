@@ -43,7 +43,7 @@ $turno = $regTurno->fetch_array();
 	<div class="tooltip">
 		<?php
 			if ($turno['turno'] == 1) {
-				echo '<a href="#" onclick="if (atacar == 0){document.getElementById("tablero").style.cursor = "crosshair"; tomarXY = 1; accion = "atacar"; atacar = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+				echo '<a href="#" onclick="if (atacar == 0){document.getElementById("tablero").style.cursor = "crosshair"; tomarXY = 1; accion = "atacar"; atacar = 1; habilidad = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}else{
 				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}
