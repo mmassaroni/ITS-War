@@ -79,11 +79,10 @@
 				        		data: { coordenadaX: x, coordenadaY: y },
 								type: "POST",
 						        url: "juego/fachada/mover.php",
-						        dataType: "json",
-						        success: function (respuesta) { 
+						        success: function () { 
 						        	document.getElementById("tablero").style.cursor = "auto";
 						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        	//setInterval(posicionarte);
+						        	controlPosicion();
 								}
 							});
 			        	}
@@ -122,32 +121,43 @@
 							$("#panel1").load("juego/generador/panel_iz.php"); 
 				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
 				        	$("#tablero").load("juego/generador/tablero.php?accion='.$_GET['accion'].'");
-						}';
+						}
+						';
 
-					echo 'var posicionarte = setInterval(function turno(){
-							$.ajax({
-								data: { accion : "miTurno" },
-								type: "POST",
-						        url: "juego/fachada/turno.php",
-						        dataType: "json",
-						        success: function (respuesta) { 
-						        	if (respuesta[0] == 1 && respuesta[1] < 4) {
-						        		//clearInterval(posicionarte);
-						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        		alert("Elige tu posicion inicial en el tablero.");
-						        		document.getElementById("tablero").style.cursor = "crosshair";
-										tomarXY = 1;
-						        	} else {
-						        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        	}
+					echo '
 
-						        	if (respuesta[1] == 4) { 
-						        		clearInterval(posicionarte);
-						        		alert("Arranca"); 
-						        	}
-							}
-							})}
-							, 5000);';
+						alert("Es momento de elegir las posiciones. Espera tu turno.");
+
+						function controlPosicion () {
+							var posicionarte = setInterval(function turno(){
+								$.ajax({
+									data: { accion : "miTurno" },
+									type: "POST",
+							        url: "juego/fachada/turno.php",
+							        dataType: "json",
+							        success: function (respuesta) { 
+							        	if (respuesta[0] == 1 && respuesta[1] < 4) {
+							        		clearInterval(posicionarte);
+							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+							        		$("#panel1").load("juego/generador/panel_iz.php"); 
+					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+							        		alert("Elige tu posicion inicial en el tablero.");
+							        		document.getElementById("tablero").style.cursor = "crosshair";
+											tomarXY = 1;
+							        	} else {
+							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+							        		$("#panel1").load("juego/generador/panel_iz.php"); 
+					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+							        	}
+
+							        	if (respuesta[1] == 4) { 
+							        		clearInterval(posicionarte);
+							        		alert("¡Comienza la partida!"); 
+							        	}
+								}
+								})}
+								, 5000);
+						} controlPosicion();';
 
 				}
 
