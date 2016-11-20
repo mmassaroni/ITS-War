@@ -25,12 +25,7 @@ $regTurno = $db->query("SELECT turno FROM usu_pj_partida WHERE partida = ".$_SES
 $turno = $regTurno->fetch_array();
 ?>
 
-
-<?php if ($turno['turno'] == 0) { echo "<img id='matePanel' src='/images/mate.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 6s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 6s; animation-iteration-count: infinite;'>"; } else { echo "<img id='matePanel' src='/images/mate.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 6s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 6s; animation-iteration-count: infinite; height: 0%'>"; } ?>
-
-
-
-<?php if ($turno['turno'] == 0) { echo "<div class=\"movimientos\" style='visibility: hidden;'>"; } else { echo "<div class=\"movimientos\" style='visibility: visible;'>"; } ?>
+<?php if ($turno['turno'] == 0) { echo "<div class=\"movimientos\" style='visibility: hidden;'><script type=\"text/javascript\">function ocultarPanel3(){document.getElementById('panel3').style.width = 0%;}ocultarPanel3();</script>"; } else { echo "<div class=\"movimientos\" style='visibility: visible;'>"; } ?>
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"if (mover == 0){document.getElementById('tablero').style.cursor = 'crosshair'; tomarXY = 1; accion = 'mover'; mover = 1;}\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"pasar(); jugar();\" class=\"movBtn\">PASAR</a>"; } else { echo "<a href='#' class=\"movBtn\">PASAR</a>"; } ?>
 </div>
