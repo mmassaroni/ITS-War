@@ -241,7 +241,7 @@
 		<div id="juego">	
 			<div class="row">
 				<div id="panel1" class="panel">
-					<?php if ($_GET['accion'] != "esperando" and $_GET['accion'] != "jugando"){echo "<img src='/images/mate.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 4s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 4s; animation-iteration-count: infinite; margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}?>
+					<?php if ($_GET['accion'] != "esperando" and $_GET['accion'] != "jugando"){echo "<img src='/images/logo.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 4s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 4s; animation-iteration-count: infinite; margin-top: 20%'><img src='/images/loading.gif' style='width: 105px;'>";}?>
 				</div><!--cierre panel1-->
 				
 				<div id="tablero" <?php if ($_GET['accion']=='jugando') { echo "style='text-align: left;'";	} ?>>
