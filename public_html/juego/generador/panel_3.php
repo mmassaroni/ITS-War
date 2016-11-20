@@ -30,7 +30,7 @@ echo '
 ?>
 
 <?php if ($turno['turno'] == 0) { echo "<div class=\"movimientos\" style='visibility: hidden;'>"; } else { echo "<div class=\"movimientos\" style='visibility: visible;'>"; } ?>
-	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"tomarXY = 1; accion = 'mover'; mover = 1;\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
+	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"if (mover == 0){document.getElementById('tablero').style.cursor = 'crosshair'; tomarXY = 1; accion = 'mover'; mover = 1;}\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"pasar(); jugar();\" class=\"movBtn\">PASAR</a>"; } else { echo "<a href='#' class=\"movBtn\">PASAR</a>"; } ?>
 </div>
 <?php if ($turno['turno'] == 0) { echo "<hr style='visibility: hidden;'>"; } else { echo "<hr style='visibility: visible;'>"; } ?>

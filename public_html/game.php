@@ -92,7 +92,8 @@
 						        		if (mover == 1 && atacar == 1) {
 						        			pasar();
 						        		}
-						        		jugar();   	
+						        		jugar();
+						        	}   	
 								}
 							});
 			        	}
@@ -184,7 +185,6 @@
 							        		$("#panel1").load("juego/generador/panel_iz.php"); 
 					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
 					        				$("#panel3").load("juego/generador/panel_3.php");
-							        		document.getElementById("tablero").style.cursor = "crosshair";
 							        	} else {
 							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 							        		$("#panel1").load("juego/generador/panel_iz.php"); 
