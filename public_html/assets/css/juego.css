@@ -266,6 +266,7 @@ ul.topnav li.ex, a, button {
 
 #panel3 {
     width: 500px;
+    transition: 2s;
     height: 100px;
     border: 3px solid black;
     border-radius: 3px;
@@ -430,5 +431,10 @@ ul.topnav li.ex, a, button {
 
 .matePanel {
   height: 100%;
-  transition: 3s;
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 6s; 
+  -webkit-animation-iteration-count: infinite; 
+  animation-name: rotate; 
+  animation-duration: 6s; 
+  animation-iteration-count: infinite;
 }

@@ -114,7 +114,7 @@
 					
 					echo 'function cargarPanelesPrimeraVez(){
 							$("#panel1").load("juego/generador/panel_iz.php"); 
-				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'"); 		        	
+				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'"); 
 						}';
 
 					echo '
@@ -313,12 +313,13 @@
 			<div class="row">
 				
 				<div id="panel3">
-
+					<?php if ($_GET['tab'] != 1) { echo "<img id='matePanel' src='/images/mate.png'>"; } ?>
 				</div><!-- cierre panel3 -->
 
 			</div>
 		</div><!--cierre juego-->
 		<script type="text/javascript">
+
 			// Get the modal
 			var modal = document.getElementById('myModal');
 
