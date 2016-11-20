@@ -88,7 +88,12 @@
 						        	if (accion == "posicionamiento") {
 						        		pasar();
 						        		controlPosicion();	
-						        	}else if (accion == "mover" || accion == "atacar"){
+						        	}else if (accion == "mover"){
+						        		if (mover == 1 && atacar == 1) {
+						        			pasar();
+						        		}
+						        		jugar();
+						        	}else if (accion == "atacar"){
 						        		if (mover == 1 && atacar == 1) {
 						        			pasar();
 						        		}

@@ -23,10 +23,6 @@ $regDatosHab = $db2->query("SELECT h.numero, h.nombre, h.costo_energia, h.efecto
 $db3 = new Conexion;
 $regTurno = $db->query("SELECT turno FROM usu_pj_partida WHERE partida = ".$_SESSION['partida']->getid()." AND usuario = ".$_SESSION['objUsu']->getid()." AND turno = 1") or die("ERROR CON LA BD");
 $turno = $regTurno->fetch_array();
-
-echo '
-
-'
 ?>
 
 
@@ -38,11 +34,22 @@ echo '
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"if (mover == 0){document.getElementById('tablero').style.cursor = 'crosshair'; tomarXY = 1; accion = 'mover'; mover = 1;}\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"pasar(); jugar();\" class=\"movBtn\">PASAR</a>"; } else { echo "<a href='#' class=\"movBtn\">PASAR</a>"; } ?>
 </div>
+
 <?php if ($turno['turno'] == 0) { echo "<hr style='visibility: hidden;'>"; } else { echo "<hr style='visibility: visible;'>"; } ?>
+
 <div class="ataques" <?php if ($turno['turno'] == 0) { echo "style='visibility: hidden;'"; } ?>>
 	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px"><span class="tooltiptext"><?php echo "<span class='nombreHab'>Golpe</span><br><hr><span class='cuerpoHab'>Efecto: Daño<br>Tipo: Target<br>Daño: <span style='color: #c70000'>".$datosPer['fuerza']."</span><br>Alcance: <span style='color: #1795de'>2</span><br>Costo de energia: <span style='color: #efea56'>0</span></span>"; ?></span></a></div>
 	
-	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px"><span class="tooltiptext">
+	<div class="tooltip">
+		<?php
+			if ($turno['turno'] == 1) {
+				echo '<a href="#" onclick="if (atacar == 0){document.getElementById("tablero").style.cursor = "crosshair"; tomarXY = 1; accion = "atacar"; atacar = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+			}else{
+				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+			}
+		?>
+
+		<span class="tooltiptext">
 		<?php 
 			while ($datosHab = $regDatosHab->fetch_array()) {
 			 	if ($datosHab['numero'] == 1) {
@@ -53,7 +60,10 @@ echo '
 		?>
 	</span></a></div>
 	
-	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at3.png" style="margin-top: 4px"><span class="tooltiptext">
+	<div class="tooltip">
+		<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at3.png" style="margin-top: 4px">
+
+		<span class="tooltiptext">
 		<?php 
 			while ($datosHab = $regDatosHab->fetch_array()) {
 			 	if ($datosHab['numero'] == 2) {
