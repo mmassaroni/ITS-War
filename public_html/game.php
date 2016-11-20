@@ -22,6 +22,8 @@
 			// Habilita el ajax para tomar las coordenadas con valor 1
 			var tomarXY = 0;
 			var accion = "posicionamiento";
+			var mover = 0;
+			var atacar = 0;
 
 			$(function () {
 		    	// Ubico el tablero en la pantalla
@@ -84,11 +86,13 @@
 						        	document.getElementById("tablero").style.cursor = "auto";
 						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 						        	if (accion == "posicionamiento") {
+						        		pasar();
 						        		controlPosicion();	
-						        	}else if (accion == "mover"){
-						        		jugar();
-						        	}
-						        	
+						        	}else if (accion == "mover" || accion == "atacar"){
+						        		if (mover == 1 && atacar == 1) {
+						        			pasar();
+						        		}
+						        		jugar();   	
 								}
 							});
 			        	}
@@ -159,7 +163,6 @@
 							        	if (respuesta[1] == 4) { 
 							        		clearInterval(posicionarte);
 							        		alert("¡Comienza la partida!"); 
-							        		accion = "mover";
 							        		jugar();
 							        	}
 									}
@@ -180,12 +183,13 @@
 							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 							        		$("#panel1").load("juego/generador/panel_iz.php"); 
 					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+					        				$("#panel3").load("juego/generador/panel_3.php");
 							        		document.getElementById("tablero").style.cursor = "crosshair";
-											
 							        	} else {
 							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 							        		$("#panel1").load("juego/generador/panel_iz.php"); 
 					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+					        				$("#panel3").load("juego/generador/panel_3.php");
 							        	}
 									}
 								})}
@@ -199,7 +203,9 @@
 					        url: "juego/fachada/turno.php",
 					        success: function (respuesta) { 
 				        		$("#panel1").load("juego/generador/panel_iz.php"); 
-		        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+		        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando");
+		        				mover = 0;
+		        				atacar = 0; 
 							}
 						});
 					}';
@@ -302,7 +308,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}else{require_once('juego/generador/panel_3.php');}?>
+					<?php if ($_GET['tab'] == null) {echo "<img src='/images/bob.gif' style='width:160px'>";}?>
 				</div><!-- cierre panel3 -->
 
 			</div>
