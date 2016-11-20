@@ -427,3 +427,8 @@ ul.topnav li.ex, a, button {
   border-radius: 1px;
   margin: 0 15px;
 }
+
+.matePanel {
+  height: 100%;
+  transition: 3s;
+}

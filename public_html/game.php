@@ -308,7 +308,7 @@
 			<div class="row">
 				
 				<div id="panel3">
-					<?php if ($_GET['tab'] == null) {echo "<img src='/images/mate.png' style='-webkit-animation-name: rotate; -webkit-animation-duration: 4s; -webkit-animation-iteration-count: infinite; animation-name: rotate; animation-duration: 4s; animation-iteration-count: infinite; width:160px'>";}?>
+
 				</div><!-- cierre panel3 -->
 
 			</div>
