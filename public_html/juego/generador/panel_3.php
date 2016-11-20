@@ -8,8 +8,8 @@ $db2 = new Conexion;
 $regDatosHab = $db2->query("SELECT h.numero, h.nombre, h.costo_energia, h.efecto, h.potencia, h.alcance, h.tipo FROM habilidad h, personaje p, usu_pj_partida upp WHERE upp.partida = ".$_SESSION['partida']->getid()." AND upp.usuario = ".$_SESSION['objUsu']->getid()." AND upp.personaje = p.id AND p.id = h.personaje") or die("ERROR CON LA BD");
 ?>
 <div class="movimientos">
-	<a href="#" class="movBtn">MOVER</a>
-	<a href="#" class="movBtn">PASAR</a>
+	<a href="#" onclick="tomarXY = 1; accion = 'mover';" class="movBtn">MOVER</a>
+	<a href="#" onclick="pasar();" class="movBtn">PASAR</a>
 </div>
 <hr>
 <div class="ataques">

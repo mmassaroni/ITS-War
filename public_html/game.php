@@ -21,6 +21,7 @@
 		<script type="text/javascript">
 			// Habilita el ajax para tomar las coordenadas con valor 1
 			var tomarXY = 0;
+			var accion = "posicionamiento";
 
 			$(function () {
 		    	// Ubico el tablero en la pantalla
@@ -82,7 +83,12 @@
 						        success: function () { 
 						        	document.getElementById("tablero").style.cursor = "auto";
 						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
-						        	controlPosicion();
+						        	if (accion == "posicionamiento") {
+						        		controlPosicion();	
+						        	}else if (accion == "mover"){
+						        		jugar();
+						        	}
+						        	
 								}
 							});
 			        	}
@@ -153,12 +159,50 @@
 							        	if (respuesta[1] == 4) { 
 							        		clearInterval(posicionarte);
 							        		alert("¡Comienza la partida!"); 
+							        		accion = "mover";
+							        		jugar();
 							        	}
-								}
+									}
 								})}
-								, 5000);
-						} controlPosicion();';
+							, 5000);
+						} if (accion == "posicionamiento"){controlPosicion();}';
 
+					echo 'function jugar() {
+							var jugar = setInterval(function jugarTurno(){
+								$.ajax({
+									data: { accion : "miTurno" },
+									type: "POST",
+							        url: "juego/fachada/turno.php",
+							        dataType: "json",
+							        success: function (respuesta) { 
+							        	if (respuesta[0] == 1) {
+							        		clearInterval(jugar);
+							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+							        		$("#panel1").load("juego/generador/panel_iz.php"); 
+					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+							        		document.getElementById("tablero").style.cursor = "crosshair";
+											
+							        	} else {
+							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
+							        		$("#panel1").load("juego/generador/panel_iz.php"); 
+					        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+							        	}
+									}
+								})}
+							, 5000);
+						}';
+
+					echo 'function pasar() {
+						$.ajax({
+							data: { accion : "pasar" },
+							type: "POST",
+					        url: "juego/fachada/turno.php",
+					        success: function (respuesta) { 
+				        		$("#panel1").load("juego/generador/panel_iz.php"); 
+		        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando"); 
+							}
+						});
+					}';
 				}
 
 			?>

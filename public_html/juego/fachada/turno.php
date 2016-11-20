@@ -14,7 +14,7 @@
 	require_once('../usuarios.php');
 	session_start();
 
-	if ($_POST['accion'] = "miTurno") {
+	if ($_POST['accion'] == "miTurno") {
 		$respuesta = array();
 
 		$db = new Conexion();
@@ -36,6 +36,22 @@
 		$respuesta[1] = $jugadores;
 
 		echo json_encode($respuesta);
+	} elseif ($_POST['accion'] == "pasar") {
+		$db3 = new Conexion();
+		$registro = $db3->query('select numero from usu_pj_partida where partida = '. $_SESSION['partida']->getid() .' and turno = 1');
+		$a = $registro->fetch_array();
+		mysqli_close($db2);
+
+		if ($a['numero'] < 4) {
+			$b = $a['numero']+1;
+		} else {
+			$b = 1;
+		}
+
+		$db4 = new Conexion();
+		$db4->query('update usu_pj_partida set turno = 0 where partida = ' . $_SESSION['partida']->getid());
+		$db4->query('update usu_pj_partida set turno = 1 where partida = ' . $_SESSION['partida']->getid() .' and numero = ' . $b);
+		mysqli_close($db3);
 	}
 
 ?>
