@@ -83,19 +83,36 @@
 				        		data: { coordenadaX: x, coordenadaY: y, accion: accion, habilidad},
 								type: "POST",
 						        url: "juego/fachada/mover.php",
-						        success: function () { 
+						        dataType: "json",
+						        success: function (respuesta) { 
 						        	document.getElementById("tablero").style.cursor = "auto";
 						        	$("#tablero").load("juego/generador/tablero.php?accion=jugando");
 						        	if (accion == "posicionamiento") {
 						        		pasar();
 						        		controlPosicion();	
-						        	}else if (accion == "mover" || accion == "atacar"){
+						        	}else if (accion == "mover"){
 						        		if (mover == 1 && atacar == 1) {
 						        			pasar();
 						        		}
 						        		jugar();
-						        	}   	
+						        	}else if (accion == "atacar"){
+						        		if (respuesta == 0) {
+						        			alert("Elige un objetivo valido");
+						        			atacar = 0;
+						        		}else if (respuesta == 1){
+						        			alert("No tienes suficiente energía para tirar esta habilidad");
+						        			atacar = 0;
+						        		}
+						        		if (mover == 1 && atacar == 1) {
+						        			pasar();
+						        		}
+						        		jugar();
+						        	}
+								},
+								error: function(respuesta){
+									alert(respuesta);
 								}
+
 							});
 			        	}
 			        	mover();

@@ -14,7 +14,7 @@
 	require_once('../usuarios.php');
 session_start();
 $db = new Conexion;
-$regDatosPer = $db->query("SELECT p.fuerza FROM personaje p, usu_pj_partida upp WHERE upp.partida = ".$_SESSION['partida']->getid()." AND upp.usuario = ".$_SESSION['objUsu']->getid()." AND upp.personaje = p.id") or die("ERROR CON LA BD");
+$regDatosPer = $db->query("SELECT fuerza FROM usu_pj_partida WHERE partida = ".$_SESSION['partida']->getid()." AND usuario = ".$_SESSION['objUsu']->getid()) or die("ERROR CON LA BD");
 $datosPer = $regDatosPer->fetch_array();
 
 $db2 = new Conexion;
@@ -33,12 +33,23 @@ $turno = $regTurno->fetch_array();
 <?php if ($turno['turno'] == 0) { echo "<hr style='visibility: hidden;'>"; } else { echo "<hr style='visibility: visible;'>"; } ?>
 
 <div class="ataques" <?php if ($turno['turno'] == 0) { echo "style='visibility: hidden;'"; } ?>>
-	<div class="tooltip"><a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px"><span class="tooltiptext"><?php echo "<span class='nombreHab'>Golpe</span><br><hr><span class='cuerpoHab'>Efecto: Daño<br>Tipo: Target<br>Daño: <span style='color: #c70000'>".$datosPer['fuerza']."</span><br>Alcance: <span style='color: #1795de'>2</span><br>Costo de energia: <span style='color: #efea56'>0</span></span>"; ?></span></a></div>
 	
 	<div class="tooltip">
 		<?php
 			if ($turno['turno'] == 1) {
-				echo '<a href="#" onclick="if (atacar == 0){document.getElementById("tablero").style.cursor = "crosshair"; tomarXY = 1; accion = "atacar"; atacar = 1; habilidad = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+				echo '<a href="#" onclick="if (atacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; atacar = 1; habilidad = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px">';
+			}else{
+				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px">';
+			}
+		?>
+		<span class="tooltiptext">
+		<?php echo "<span class='nombreHab'>Golpe</span><br><hr><span class='cuerpoHab'>Efecto: Daño<br>Tipo: Target<br>Daño: <span style='color: #c70000'>".$datosPer['fuerza']."</span><br>Alcance: <span style='color: #1795de'>2</span><br>Costo de energia: <span style='color: #efea56'>0</span></span>"; ?></span></a>
+	</div>
+	
+	<div class="tooltip">
+		<?php
+			if ($turno['turno'] == 1) {
+				echo '<a href="#" onclick="if (atacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; atacar = 1; habilidad = 2;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}else{
 				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}
