@@ -394,11 +394,11 @@
 			  function frame() {        // ⬇ este es el valor nuevo
 			    if (width <= 0 || width == valorN) {
 			      clearInterval(id);
-			      document.getElementById("label_vida").innerHTML = "";
+			      document.getElementById("label_vida1").innerHTML = "";
 			    } else {
 			      width--;
 			      elem.style.width = width + "%";
-			      document.getElementById("label_vida").innerHTML = width;
+			      document.getElementById("label_vida1").innerHTML = width;
 			    }
 			  }
 			}

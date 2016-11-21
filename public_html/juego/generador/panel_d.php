@@ -14,7 +14,7 @@
 	require_once('../usuarios.php');
 	session_start();
 	$db = new Conexion();
-	$registros = $db->query("select upp.turno, upp.numero, u.id, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
+	$registros = $db->query("select upp.turno, upp.numero, u.id, u.nombre as nombreJugador, upp.vida, per.vida as pervida, upp.energia, per.energia as perenergia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 3 or upp.numero = 4) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
 	while ($reg = $registros->fetch_array()) {
 		if ($reg['numero'] == 3){
 			$datosJ3 = $reg;
@@ -51,13 +51,14 @@
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
-					<div id="myBar_vida">
-						<div id="label_vida"><?php echo $datosJ3['vida']; ?></div>
-					</div>
+					<div id="myBar_vida" <?php if (isset($datosJ3['vida'])) {
+						echo "style=\"width: ". (($datosJ3['vida'] * 100) / $datosJ3['pervida']) ."%\""; } ?>></div>
+					<div id="label_vida"><?php echo $datosJ3['vida']; ?></div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
-					<div id="myBar_energia"></div>
+					<div id="myBar_energia" <?php if (isset($datosJ3['vida'])) {
+						echo "style=\"width: ". (($datosJ3['energia'] * 100) / $datosJ3['perenergia']) ."%\""; } ?>></div>
 					<div id="label_energia"><?php echo $datosJ3['energia']; ?></div>
 				</div> 
 			<h2>FUERZA<span> <?php echo $datosJ3['fuerza']; ?></span></h2>
@@ -94,13 +95,14 @@
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
-					<div id="myBar_vida">
-						<div id="label_vida"><?php echo $datosJ4['vida']; ?></div>
-					</div>
+					<div id="myBar_vida" <?php if (isset($datosJ4['vida'])) {
+						echo "style=\"width: ". (($datosJ4['vida'] * 100) / $datosJ4['pervida']) ."%\""; } ?>></div>
+					<div id="label_vida"><?php echo $datosJ4['vida']; ?></div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
-					<div id="myBar_energia"></div>
+					<div id="myBar_energia" <?php if (isset($datosJ4['vida'])) {
+					echo "style=\"width: ". (($datosJ4['energia'] * 100) / $datosJ4['perenergia']) ."%\""; } ?>></div>
 					<div id="label_energia"><?php echo $datosJ4['energia']; ?></div>
 				</div> 
 			<h2>FUERZA<span> <?php echo $datosJ4['fuerza']; ?></span></h2>

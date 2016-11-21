@@ -14,7 +14,7 @@
 	require_once('../usuarios.php');
 	session_start();
 	$db = new Conexion();
-	$registros = $db->query("select upp.turno, upp.numero, u.id, u.nombre as nombreJugador, upp.vida, upp.energia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 1 or upp.numero = 2) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
+	$registros = $db->query("select upp.turno, upp.numero, u.id, u.nombre as nombreJugador, upp.vida, per.vida as pervida, upp.energia, per.energia as perenergia, upp.fuerza, upp.resistencia, per.imgCuerpo, per.nombre as nombrePJ from usuario u, usu_pj_partida upp, partida p, personaje per where upp.partida = ".$_SESSION['partida']->getid()." and upp.usuario = u.id and upp.personaje = per.id and (upp.numero = 1 or upp.numero = 2) and (p.estado = 'creando' or p.estado = 'en curso')") or die("ERROR CON LA BD");
 	while ($reg = $registros->fetch_array()) {
 		if ($reg['numero'] == 1){
 			$datosJ1 = $reg;
@@ -51,14 +51,15 @@
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
-					<div id="myBar_vida1">
-						<div id="label_vida"></div>
-					</div>
+					<div id="myBar_vida" <?php if (isset($datosJ1['vida'])) {
+						echo "style=\"width: ". (($datosJ1['vida'] * 100) / $datosJ1['pervida']) ."%\""; } ?>></div>
+					<div id="label_vida"><?php echo $datosJ1['vida']; ?></div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
-					<div id="myBar_energia1"></div>
-					<div id="label_energia">10<!-- <?php// echo $datosJ1['energia']; ?> --></div>
+					<div id="myBar_energia" <?php if (isset($datosJ1['vida'])) {
+						echo "style=\"width: ". (($datosJ1['energia'] * 100) / $datosJ1['perenergia']) ."%\""; } ?>></div>
+					<div id="label_energia"><?php echo $datosJ1['energia']; ?></div>
 				</div> 
 			<h2>FUERZA<span> <?php echo $datosJ1['fuerza']; ?></span></h2>
 			<hr>
@@ -94,13 +95,14 @@
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
-					<div id="myBar_vida">
-						<div id="label_vida"><?php echo $datosJ2['vida']; ?></div>
-					</div>
+					<div id="myBar_vida" <?php if (isset($datosJ2['vida'])) {
+						echo "style=\"width: ". (($datosJ2['vida'] * 100) / $datosJ2['pervida']) ."%\""; } ?>></div>
+					<div id="label_vida"><?php echo $datosJ2['vida']; ?></div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
-					<div id="myBar_energia"></div>
+					<div id="myBar_energia" <?php if (isset($datosJ2['vida'])) {
+					echo "style=\"width: ". (($datosJ2['energia'] * 100) / $datosJ2['perenergia']) ."%\""; } ?>></div>
 					<div id="label_energia"><?php echo $datosJ2['energia']; ?></div>
 				</div> 
 			<h2>FUERZA<span> <?php echo $datosJ2['fuerza']; ?></span></h2>
@@ -109,15 +111,3 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	function asignarVida () {
-		if (p == true) {
-			p = false;
-			document.getElementById("myBar_vida1").innerHTML = <?php echo $datosJ1['vida']; ?>;
-		}
-	}
-
-	vida(<?php echo $datosJ1['vida']; ?>, document.getElementById("myBar_vida1").innerHTML);
-	energia();
-</script>

@@ -190,7 +190,7 @@ ul.topnav li.ex, a, button {
 
 #myBar_energia {
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-color: #b70844;
 }
@@ -359,7 +359,9 @@ ul.topnav li.ex, a, button {
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 
 
