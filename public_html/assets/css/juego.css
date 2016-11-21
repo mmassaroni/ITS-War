@@ -429,7 +429,7 @@ ul.topnav li.ex, a, button {
   margin: 0 15px;
 }
 
-.matePanel {
+#matePanel {
   height: 100%;
   -webkit-animation-name: rotate;
   -webkit-animation-duration: 6s; 
@@ -437,4 +437,18 @@ ul.topnav li.ex, a, button {
   animation-name: rotate; 
   animation-duration: 6s; 
   animation-iteration-count: infinite;
+}
+
+@-moz-keyframes spin { 100% { 
+  -moz-transform:rotate(360deg); 
+  }
+}
+@-webkit-keyframes spin { 100% { 
+  -webkit-transform:rotate(360deg); 
+  }
+}
+@keyframes spin { 100% {
+  -webkit-transform:rotate(360deg);
+  transform:rotate(360deg);
+  }
 }
