@@ -33,8 +33,27 @@
 			$jugadores += 1;
 		}
 		mysqli_close($db2);
+
 		$respuesta[1] = $jugadores;
 
+
+		if ($respuesta[0] == 1){
+			//SUBIR ENERGIA EN LOS TURNOS
+			$db4 = new Conexion();
+			$regEnergia = $db4->query("select energia from usu_pj_partida where turno = 1 and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+			$energia = $regEnergia->fetch_array();
+			mysqli_close($db4);
+			
+			$energiaFinal = $energia['energia'] + 4;
+			if ($energiaFinal > 10){
+				$energiaFinal = 10;
+			}
+
+			$db5 = new Conexion();
+			$db5->query("update usu_pj_partida set energia = ".$energiaFinal." where turno = 1 and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+			mysqli_close($db5);
+		}
+		
 		echo json_encode($respuesta);
 	} elseif ($_POST['accion'] == "pasar") {
 		$db3 = new Conexion();
@@ -52,6 +71,7 @@
 		$db4->query('update usu_pj_partida set turno = 0 where partida = ' . $_SESSION['partida']->getid());
 		$db4->query('update usu_pj_partida set turno = 1 where partida = ' . $_SESSION['partida']->getid() .' and numero = ' . $b);
 		mysqli_close($db3);
+
 	}
 
 ?>

@@ -30,7 +30,7 @@
 				$costo_energia = 0;
 			}else{
 				$db4 = new Conexion();
-				$regHabUsada = $db4->query("SELECT h.costo_energia, h.efecto, h.potencia, h.alcance, h.tipo FROM habilidad h, personaje p, usu_pj_partida upp WHERE upp.partida = ".$_SESSION['partida']->getid()." AND upp.usuario = ".$_SESSION['objUsu']->getid()." AND upp.personaje = p.id AND p.id = h.personaje and h.numero = ".$_POST['habilidad']) or die("ERROR CON LA BD"); 
+				$regHabUsada = $db4->query("SELECT h.costo_energia, h.efecto, h.potencia, h.alcance, h.tipo FROM habilidad h, personaje p, usu_pj_partida upp WHERE upp.partida = ".$_SESSION['partida']->getid()." AND upp.usuario = ".$_SESSION['objUsu']->getid()." AND upp.personaje = p.id AND p.id = h.personaje and h.numero = ".($_POST['habilidad'] - 1)) or die("ERROR CON LA BD"); 
 				$habUsada = $regHabUsada->fetch_array();
 				mysqli_close($db4);
 
@@ -50,10 +50,15 @@
 					$dañoTotal = 1;
 				}
 				$vidaVictima = $victima['vida'] - $dañoTotal;
-
+				$energia = $jugador['energia'] - $costo_energia;
+				
 				$db5 = new Conexion();
 				$db5->query("update usu_pj_partida set vida = ".$vidaVictima." where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
 				mysqli_close($db5);
+
+				$db6 = new Conexion();
+				$db6->query("update usu_pj_partida set energia = ".$energia." where turno = 1 and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+				mysqli_close($db6);
 				echo json_encode(2);
 			}
 			

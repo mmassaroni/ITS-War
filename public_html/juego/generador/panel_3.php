@@ -69,8 +69,13 @@ $turno = $regTurno->fetch_array();
 	</span></a></div>
 	
 	<div class="tooltip">
-		<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at3.png" style="margin-top: 4px">
-
+		<?php
+			if ($turno['turno'] == 1) {
+				echo '<a href="#" onclick="if (aAtacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; habilidad = 3;}" style="margin: 0 15px;"><img src="../../images/juego/at3.png" style="margin-top: 4px">';
+			}else{
+				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+			}
+		?>
 		<span class="tooltiptext">
 		<?php 
 			while ($datosHab = $regDatosHab->fetch_array()) {

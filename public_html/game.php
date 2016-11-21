@@ -167,6 +167,8 @@
 							        url: "juego/fachada/turno.php",
 							        dataType: "json",
 							        success: function (respuesta) { 
+							        	alert(respuesta[0]);
+							        	alert(respuesta[1]);
 							        	if (respuesta[0] == 1 && respuesta[1] < 4) {
 							        		clearInterval(posicionarte);
 							        		$("#tablero").load("juego/generador/tablero.php?accion=jugando");
