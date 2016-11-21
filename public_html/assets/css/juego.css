@@ -320,6 +320,8 @@ ul.topnav li.ex, a, button {
     padding: 0;
     border: 1px solid #888;
     width: 80%;
+    height: 700px;
+    overflow-y: scroll;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -357,10 +359,21 @@ ul.topnav li.ex, a, button {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+    text-align: center;
 }
 
 .modal-body {
   padding: 2px 16px;
+}
+
+.modal-personaje, .modal-datos, .modal-elegir {
+  display: inline-block;
+  margin: 0 100px;
+}
+
+.modal-datos {
+  line-height: 47px;
+  text-align: left;
 }
 
 

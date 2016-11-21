@@ -313,14 +313,15 @@
 							<?php 
 								foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
 									echo 
-									'	<div class="modal-personaje"><img src="'.$personaje->getimgCuerpo().'" title="'.$personaje->getnombre().'"></div>
+									'	<br><div class="modal-personaje"><img src="'.$personaje->getimgCuerpo().'" title="'.$personaje->getnombre().'"></div>
 									    <div class="modal-datos">
 									    	<h2>'.$personaje->getnombre().'</h2>
-									    	<h4>VIDA:......... <span class="modal-valor">'.$personaje->getvida().'</span></h4>
-									    	<h4>FUERZA:....... <span class="modal-valor"></span>'.$personaje->getfuerza().'</h4>
-									    	<h4>RESISTENCIA:.. <span class="modal-valor"></span>'.$personaje->getresistencia().'</h4>
+									    	<h4>VIDA: ......... <span style="color: #19a67c;">'.$personaje->getvida().'</span></h4>
+									    	<h4>FUERZA: ....... <span style="color: #1795de;"></span>'.$personaje->getfuerza().'</h4>
+									    	<h4>RESISTENCIA: .. <span style="color: #1795de;"></span>'.$personaje->getresistencia().'</h4>
 									    </div>
-									    <div class="modal-elegir"><a href="game.php?&accion=buscando&personaje='. $personaje->getid() .'">ELEGIR</a></div>';
+									    <div class="modal-elegir"><a href="game.php?&accion=buscando&personaje='. $personaje->getid() .'" style="text-decoration:none;font-size: 25px;background-color: #5cb85c;padding: 15px 25px;color: white;">ELEGIR</a></div>
+									    <br><br><hr>';
 								}
 							?>
 
