@@ -45,10 +45,9 @@
 				
 			}
 		}	 
-		// style='-webkit-animation:spin 2s linear infinite; -moz-animation:spin 2s linear infinite; animation:spin 2s linear infinite;'
 	?>
 	<div class="row vertical">
-		<div class="img-per"><img <?php if (empty($datosJ1['imgCuerpo'])){ echo "src='../../images/loading.gif'"; } else{echo "src='" . $datosJ1['imgCuerpo'] . "'";} echo "title='".$datosJ1['nombrePJ']."'"; ?>></div>
+		<div class="img-per"><img <?php if (empty($datosJ1['imgCuerpo'])){ echo "src='../../images/loading.png' style='-webkit-animation:spin 2s linear infinite; -moz-animation:spin 2s linear infinite; animation:spin 2s linear infinite;'"; } else{echo "src='" . $datosJ1['imgCuerpo'] . "'";} echo "title='".$datosJ1['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
@@ -91,7 +90,7 @@
 		}	 
 	?>
 	<div class="row vertical">
-		<div class="img-per"><img <?php if (empty($datosJ2['imgCuerpo'])){ echo "src='../../images/loading.gif'"; } else{echo "src='" . $datosJ2['imgCuerpo'] . "'";} echo "title='".$datosJ2['nombrePJ']."'"; ?>></div>
+		<div class="img-per"><img <?php if (empty($datosJ2['imgCuerpo'])){ echo "src='../../images/loading.png' style='-webkit-animation:spin 2s linear infinite; -moz-animation:spin 2s linear infinite; animation:spin 2s linear infinite;'"; } else{echo "src='" . $datosJ2['imgCuerpo'] . "'";} echo "title='".$datosJ2['nombrePJ']."'"; ?>></div>
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
