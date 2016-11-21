@@ -54,23 +54,6 @@
 					$vidaVictima = 0;
 				}
 
-				if ($vidaVictima == 0){
-					$dbMuerte = new Conexion();
-					$dbMuerte->query("update usu_pj_partida set ganador = 0 where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
-					mysqli_close($dbMuerte);
-
-					$dbVerSiGano = new Conexion();
-					$regVerSiGano = $dbVerSiGano->query("select ganador from usu_pj_partida where ganador = null and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON AL BD");
-					$verSiGano = $regVerSiGano->fetch_array();
-					mysqli_close($dbVerSiGano);
-					if ($verSiGano['ganador'] == null) {
-						
-					}else{
-						echo json_encode(3);
-						die();
-					}
-				}
-
 				$energia = $jugador['energia'] - $costo_energia;
 				
 				$db5 = new Conexion();
@@ -80,7 +63,31 @@
 				$db6 = new Conexion();
 				$db6->query("update usu_pj_partida set energia = ".$energia." where turno = 1 and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
 				mysqli_close($db6);
-				echo json_encode(2);
+
+				if ($vidaVictima == 0){
+					$dbMuerte = new Conexion();
+					$dbMuerte->query("update usu_pj_partida set ganador = 0 where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+					mysqli_close($dbMuerte);
+
+					$dbVerSiGano = new Conexion();
+					$regVerSiGano = $dbVerSiGano->query("select ganador from usu_pj_partida where ganador = 0 and partida = ".$_SESSION['partida']->getid()." and turno <> 1") or die("ERROR CON LA BD");
+					mysqli_close($dbVerSiGano);
+
+					$contador = 0;
+					while ($verSiGano = $regVerSiGano->fetch_array()) {
+						$contador = $contador + 1;
+					}
+					if ($contador == 3) {
+						$dbSetGanador = new Conexion();
+						$dbSetGanador->query("update usu_pj_partida set ganador = 1 where partida = ".$_SESSION['partida']->getid()." and turno = 1") or die("ERROR CON LA BD");
+						mysqli_close($dbSetGanador);
+						
+						echo json_encode(3);
+					}else{
+						echo json_encode(2);
+					}
+				}
+				
 			}
 			
 			

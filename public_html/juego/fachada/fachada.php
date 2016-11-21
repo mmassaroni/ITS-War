@@ -96,25 +96,57 @@
 		$numeroY = intval(strval($coordenadaY / 62.5)[0]);
 
 
-		function posicionFinal($numero){
+		function posicionFinalX($numero){
 			switch ($numero) {
 				case 0:
 					return 0;
 					break;
 				case 1:
-					return 61;
+					return 62;
 					break;
 				case 2:
-					return 123;
+					return 124;
 					break;
 				case 3:
-					return 185;
+					return 186;
 					break;
 				case 4:
 					return 247;
 					break;
 				case 5:
-					return 308;
+					return 309;
+					break;
+				case 6:
+					return 371;
+					break;
+				case 7:
+					return 434;
+					break;
+				default:
+					die("ERROR en coordenadas");
+					break;
+			}
+		}
+
+		function posicionFinalY($numero){
+			switch ($numero) {
+				case 0:
+					return 0;
+					break;
+				case 1:
+					return 62;
+					break;
+				case 2:
+					return 123;
+					break;
+				case 3:
+					return 186;
+					break;
+				case 4:
+					return 248;
+					break;
+				case 5:
+					return 309;
 					break;
 				case 6:
 					return 369;
@@ -128,8 +160,8 @@
 			}
 		}
 
-		$xFinal = posicionFinal($numeroX);
-		$yFinal = posicionFinal($numeroY);
+		$xFinal = posicionFinalX($numeroX);
+		$yFinal = posicionFinalY($numeroY);
 
 		$coordenadas = array($xFinal, $yFinal);
 		return $coordenadas;
