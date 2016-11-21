@@ -274,49 +274,54 @@
 
 
 					<div id="contPlay" 
-<?php if ($_GET['tab'] == 1 ) {
-	echo "style='background-color: rgba(0,0,0,0)'";
-} ?>
-><a href=
-<?php if ($_GET['accion'] == 'esperando') { 
-	echo "'game.php?accion=saliendo'"; 
-	} else { 
-		echo "'game.php?accion=eligiendo'"; 
-	} ?> 
-	id="myBtn" 
-<?php if ($_GET['accion'] == 'jugando') {
-	echo "style=display:none";
-	} ?>
-	><img src=<?php if ($_GET['accion'] == 'esperando') { 
-		echo "'/images/Btn_stop.png'"; 
-	} else { 
-		echo "'/images/Btn_play.png'"; 
-	} ?>
-	id="Btn_play"></a>
+					<?php if ($_GET['tab'] == 1 ) {
+						echo "style='background-color: rgba(0,0,0,0)'";
+					} ?>
+					><a href=
+					<?php if ($_GET['accion'] == 'esperando') { 
+						echo "'game.php?accion=saliendo'"; 
+						} else { 
+							echo "'game.php?accion=eligiendo'"; 
+						} ?> 
+						id="myBtn" 
+					<?php if ($_GET['accion'] == 'jugando') {
+						echo "style=display:none";
+						} ?>
+						><img src=<?php if ($_GET['accion'] == 'esperando') { 
+							echo "'/images/Btn_stop.png'"; 
+						} else { 
+							echo "'/images/Btn_play.png'"; 
+						} ?>
+						id="Btn_play"></a>
 
-	</div>
-	
-<!-- The Modal -->
-<div id="myModal" class="modal">
+						</div>
+						
+					<!-- The Modal -->
+					<div id="myModal" class="modal">
 
-	<!-- Modal content -->
-	<div class="modal-content">
-	    <div class="modal-header">
-	      <span class="close">×</span>
-	      <h2>Elige un personaje</h2>
-	    </div>
-		<?php 
-			foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
-				echo 
-				"<div class='modal-body'>
-					<h3>". $personaje->getnombre() ."</h3>
-					<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
-				</div>
-				<hr>";
-			}
-		?>
-	</div>
-</div>
+						<!-- Modal content -->
+						<div class="modal-content">
+						    <div class="modal-header">
+						      <span class="close">×</span>
+						      <h2>Elige un personaje</h2>
+						    </div>
+
+							<?php 
+								foreach(($_SESSION['objUsu']->getpersonajes()->getpersonajes()) as $personaje){
+									echo 
+									'	<div class="modal-personaje"><img src="'.$personaje->getimgCuerpo().'" title="'.$personaje->getnombre().'"></div>
+									    <div class="modal-datos">
+									    	<h2>'.$personaje->getnombre().'</h2>
+									    	<h4>VIDA:......... <span class="modal-valor">'.$personaje->getvida().'</span></h4>
+									    	<h4>FUERZA:....... <span class="modal-valor"></span>'.$personaje->getfuerza().'</h4>
+									    	<h4>RESISTENCIA:.. <span class="modal-valor"></span>'.$personaje->getresistencia().'</h4>
+									    </div>
+									    <div class="modal-elegir"><a href="game.php?&accion=buscando&personaje='. $personaje->getid() .'">ELEGIR</a></div>';
+								}
+							?>
+
+						</div>
+					</div>
 
 				</div><!--cierre tablero-->
 				
