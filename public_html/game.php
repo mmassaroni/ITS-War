@@ -147,7 +147,7 @@
 							function loadpaneles(){
 				        	$("#panel1").load("juego/generador/panel_iz.php"); 
 				        	$("#panel2").load("juego/generador/panel_d.php?accion='.$_GET['accion'].'");
-						}, 5000);';
+						}, 2000);';
 				}
 
 				if ($_GET['accion'] == "jugando") { 
@@ -192,7 +192,7 @@
 							        	}
 									}
 								})}
-							, 5000);
+							, 2000);
 						} if (accion == "posicionamiento"){controlPosicion();}';
 
 					echo 'function jugar() {
@@ -217,7 +217,7 @@
 							        	}
 									}
 								})}
-							, 5000);
+							, 2000);
 						}';
 
 					echo 'function pasar() {
