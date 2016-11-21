@@ -59,7 +59,16 @@
 					$dbMuerte->query("update usu_pj_partida set ganador = 0 where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
 					mysqli_close($dbMuerte);
 
-					//$dbGanador->query("select ")
+					$dbVerSiGano = new Conexion();
+					$regVerSiGano = $dbVerSiGano->query("select ganador from usu_pj_partida where ganador = null and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON AL BD");
+					$verSiGano = $regVerSiGano->fetch_array();
+					mysqli_close($dbVerSiGano);
+					if ($verSiGano['ganador'] == null) {
+						
+					}else{
+						echo json_encode(3);
+						die();
+					}
 				}
 
 				$energia = $jugador['energia'] - $costo_energia;

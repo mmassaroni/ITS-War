@@ -104,7 +104,11 @@
 						        			alert("No tienes suficiente energía para tirar esta habilidad");
 						        		}else if (respuesta == 2){
 						        			aAtacar = 1;
+						        		}else if (respuesta == 3){
+						        			alert("GANASTE!");
+						        			window.location="game.php";
 						        		}
+
 						        		if (aMover == 1 && aAtacar == 1) {
 						        			pasar();
 						        		}
