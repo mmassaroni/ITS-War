@@ -26,7 +26,9 @@ $turno = $regTurno->fetch_array();
 ?>
 
 <?php if ($turno['turno'] == 0) { echo "<div class=\"movimientos\" style='visibility: hidden;'><script type=\"text/javascript\">function ocultarPanel3(){document.getElementById('panel3').style.width = 0%;}ocultarPanel3();</script>"; } else { echo "<div class=\"movimientos\" style='visibility: visible;'>"; } ?>
-	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"if (mover == 0){document.getElementById('tablero').style.cursor = 'crosshair'; tomarXY = 1; accion = 'mover'; mover = 1;}\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
+	
+	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"if (aMover == 0){document.getElementById('tablero').style.cursor = 'crosshair'; tomarXY = 1; accion = 'mover';}\" class=\"movBtn\">MOVER</a>"; } else { echo "<a href='#' class=\"movBtn\">MOVER</a>"; } ?>
+	
 	<?php if ($turno['turno'] == 1) { echo "<a href=\"#\" onclick=\"pasar(); jugar();\" class=\"movBtn\">PASAR</a>"; } else { echo "<a href='#' class=\"movBtn\">PASAR</a>"; } ?>
 </div>
 
@@ -37,7 +39,7 @@ $turno = $regTurno->fetch_array();
 	<div class="tooltip">
 		<?php
 			if ($turno['turno'] == 1) {
-				echo '<a href="#" onclick="if (atacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; atacar = 1; habilidad = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px">';
+				echo '<a href="#" onclick="if (aAtacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; habilidad = 1;}" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px">';
 			}else{
 				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at1.png" style="margin-top: 4px">';
 			}
@@ -49,7 +51,7 @@ $turno = $regTurno->fetch_array();
 	<div class="tooltip">
 		<?php
 			if ($turno['turno'] == 1) {
-				echo '<a href="#" onclick="if (atacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; atacar = 1; habilidad = 2;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
+				echo '<a href="#" onclick="if (aAtacar == 0){document.getElementById(\'tablero\').style.cursor = \'crosshair\'; tomarXY = 1; accion = \'atacar\'; habilidad = 2;}" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}else{
 				echo '<a href="#" style="margin: 0 15px;"><img src="../../images/juego/at2.png" style="margin-top: 4px">';
 			}

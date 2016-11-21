@@ -22,8 +22,8 @@
 			// Habilita el ajax para tomar las coordenadas con valor 1
 			var tomarXY = 0;
 			var accion = "posicionamiento";
-			var mover = 0;
-			var atacar = 0;
+			var aMover = 0;
+			var aAtacar = 0;
 			var habilidad = 0;
 
 			$(function () {
@@ -80,7 +80,7 @@
 			        	tomarXY = 0;
 			        	function mover(){
 			        		$.ajax({
-				        		data: { coordenadaX: x, coordenadaY: y, accion: accion, habilidad},
+				        		data: { coordenadaX: x, coordenadaY: y, accion: accion, habilidad: habilidad },
 								type: "POST",
 						        url: "juego/fachada/mover.php",
 						        dataType: "json",
@@ -91,26 +91,27 @@
 						        		pasar();
 						        		controlPosicion();	
 						        	}else if (accion == "mover"){
-						        		if (mover == 1 && atacar == 1) {
+						        		aMover = 1;
+						        		if (aMover == 1 && aAtacar == 1) {
 						        			pasar();
 						        		}
 						        		jugar();
 						        	}else if (accion == "atacar"){
 						        		if (respuesta == 0) {
 						        			alert("Elige un objetivo valido");
-						        			atacar = 0;
 						        		}else if (respuesta == 1){
 						        			alert("No tienes suficiente energía para tirar esta habilidad");
-						        			atacar = 0;
+						        		}else if (respuesta == 2){
+						        			aAtacar = 1;
 						        		}
-						        		if (mover == 1 && atacar == 1) {
+						        		if (aMover == 1 && aAtacar == 1) {
 						        			pasar();
 						        		}
 						        		jugar();
 						        	}
 								},
 								error: function(respuesta){
-									alert(respuesta);
+									alert("error"+respuesta);
 								}
 
 							});
@@ -222,8 +223,8 @@
 					        success: function (respuesta) { 
 				        		$("#panel1").load("juego/generador/panel_iz.php"); 
 		        				$("#panel2").load("juego/generador/panel_d.php?accion=jugando");
-		        				mover = 0;
-		        				atacar = 0; 
+		        				aMover = 0;
+		        				aAtacar = 0; 
 							}
 						});
 					}';

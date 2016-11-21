@@ -11,14 +11,14 @@
 		echo json_encode(777);
 	}else if($_POST['accion'] == "atacar") {
 		$db2 = new Conexion();
-		$regVictima = $db2->query("select numero, vida, resistencia from usu_pj_partida where ubicacionx = ".$coordenadas[0]." and ubicaciony = ".$coordenadas[1]." and usuario <> ".$_SESSION['objUsu']->getid()) or die("ERROR CON LA BD");
+		$regVictima = $db2->query("select numero, vida, resistencia from usu_pj_partida where ubicacionx = ".$coordenadas[0]." and ubicaciony = ".$coordenadas[1]." and partida = ".$_SESSION['partida']->getid()." and usuario <> ".$_SESSION['objUsu']->getid()) or die("ERROR CON LA BD");
 		$victima = $regVictima->fetch_array();
 		mysqli_close($db2);
 		if (is_null($victima['numero'])) {
 			echo json_encode(0);
 		}else{
 			$db3 = new Conexion();
-			$regJugador = $db3->query("SELECT fuerza, energia FROM usu_pj_partida WHERE partida = ".$_SESSION['partida']->getid()." AND usuario = ".$_SESSION['objUsu']->getid()) or die("ERROR CON LA BD");
+			$regJugador = $db3->query("SELECT fuerza, energia FROM usu_pj_partida WHERE partida = ".$_SESSION['partida']->getid()." AND usuario = ".$_SESSION['objUsu']->getid()." and turno = 1") or die("ERROR CON LA BD");
 			$jugador = $regJugador->fetch_array();
 			mysqli_close($db3);
 
@@ -44,11 +44,17 @@
 			if ($jugador['energia'] < $costo_energia) {
 				echo json_encode(1);
 			}else{
-				$vidaVictima = $victima['vida'] - ($daño - $victima['resistencia']);
+				if($daño > $victima['resistencia']){
+					$dañoTotal = $daño - $victima['resistencia'];
+				}else{
+					$dañoTotal = 1;
+				}
+				$vidaVictima = $victima['vida'] - $dañoTotal;
 
 				$db5 = new Conexion();
 				$db5->query("update usu_pj_partida set vida = ".$vidaVictima." where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
 				mysqli_close($db5);
+				echo json_encode(2);
 			}
 			
 			
