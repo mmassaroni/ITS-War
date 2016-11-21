@@ -51,14 +51,14 @@
 		<div class="valores-per">
 			<h2>VIDA</h2>
 				<div id="myProgress_vida">
-					<div id="myBar_vida">
-						<div id="label_vida"><?php echo $datosJ1['vida']; ?></div>
+					<div id="myBar_vida1">
+						<div id="label_vida"></div>
 					</div>
 				</div>
 			<h2>ENERGÍA</h2>
 				<div id="myProgress_energia">
-					<div id="myBar_energia"></div>
-					<div id="label_energia"><?php echo $datosJ1['energia']; ?></div>
+					<div id="myBar_energia1"></div>
+					<div id="label_energia">10<!-- <?php// echo $datosJ1['energia']; ?> --></div>
 				</div> 
 			<h2>FUERZA<span> <?php echo $datosJ1['fuerza']; ?></span></h2>
 			<hr>
@@ -109,3 +109,15 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function asignarVida () {
+		if (p == true) {
+			p = false;
+			document.getElementById("myBar_vida1").innerHTML = <?php echo $datosJ1['vida']; ?>;
+		}
+	}
+
+	vida(<?php echo $datosJ1['vida']; ?>, document.getElementById("myBar_vida1").innerHTML);
+	energia();
+</script>

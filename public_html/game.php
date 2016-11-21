@@ -25,6 +25,7 @@
 			var aMover = 0;
 			var aAtacar = 0;
 			var habilidad = 0;
+			var p = true; // pa el primer valor de vida
 
 			$(function () {
 		    	// Ubico el tablero en la pantalla
@@ -385,12 +386,12 @@
 // #######################################################
 
 
-			function vida() {
-			  var elem = document.getElementById("vida");
-			  var width = 100; // porcentage actual sin el "%"
+			function vida(valorN, valorA) {
+			  var elem = document.getElementById("myBar_vida1");
+			  var width = valorA; // porcentage actual sin el "%"
 			  var id = setInterval(frame, 30);
 			  function frame() {        // ⬇ este es el valor nuevo
-			    if (width <= 0 || width == 0) {
+			    if (width <= 0 || width == valorN) {
 			      clearInterval(id);
 			      document.getElementById("label_vida").innerHTML = "";
 			    } else {
@@ -401,12 +402,12 @@
 			  }
 			}
 
-			function energia() {
-			  var elem = document.getElementById("energia");
-			  var width = 100; // porcentage actual sin el "%"
+			function energia(valorN, valorA) {
+			  var elem = document.getElementById("myBar_energia1");
+			  var width = valorA; // porcentage actual sin el "%"
 			  var id = setInterval(frame, 30);
 			  function frame() {        // ⬇ este es el valor nuevo
-			    if (width <= 0 || width == 0) {
+			    if (width <= 0 || width == valorN) {
 			      clearInterval(id);
 			      document.getElementById("label_energia").innerHTML = "";
 			    } else {
