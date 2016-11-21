@@ -311,7 +311,8 @@
 				"<div class='modal-body'>
 					<h3>". $personaje->getnombre() ."</h3>
 					<a href='game.php?&accion=buscando&personaje=". $personaje->getid() ."'>Elegir este</a>
-				</div>";
+				</div>
+				<hr>";
 			}
 		?>
 	</div>

@@ -50,6 +50,18 @@
 					$dañoTotal = 1;
 				}
 				$vidaVictima = $victima['vida'] - $dañoTotal;
+				if ($vidaVictima < 0) {
+					$vidaVictima = 0;
+				}
+
+				if ($vidaVictima == 0){
+					$dbMuerte = new Conexion();
+					$dbMuerte->query("update usu_pj_partida set ganador = 0 where numero = ".$victima['numero']." and partida = ".$_SESSION['partida']->getid()) or die("ERROR CON LA BD");
+					mysqli_close($dbMuerte);
+
+					//$dbGanador->query("select ")
+				}
+
 				$energia = $jugador['energia'] - $costo_energia;
 				
 				$db5 = new Conexion();
